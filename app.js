@@ -4191,6 +4191,9 @@ function parseMoneyInput(value) {
 function initApp() {
   loadDatabase();
   setupEventListeners();
+  if (typeof initCloudSync === 'function') {
+    initCloudSync();
+  }
 
   const savedUser = sessionStorage.getItem('haha_logged_user');
   if (savedUser) {
@@ -4434,6 +4437,9 @@ function loadDatabase() {
 
 function saveDatabase() {
   localStorage.setItem(DB_KEY, JSON.stringify(db));
+  if (typeof pushToCloud === 'function') {
+    pushToCloud(true);
+  }
 }
 
 function resetDatabaseToDefault() {
@@ -15457,6 +15463,9 @@ function toggleTourStatus(tourId) {
 // 22. SAO LƯU, PHỤC HỒI & KIỂM TRA TOÀN VẸN
 // ==========================================
 function openBackupRestoreModal() {
+  if (typeof updateCloudSyncUi === 'function') {
+    updateCloudSyncUi();
+  }
   document.getElementById('backup-restore-modal').classList.remove('hidden');
   document.getElementById('backup-restore-modal').classList.add('flex');
 }
