@@ -1,5 +1,5 @@
 // HaHa Eco Travel Service Worker - PWA & Offline Support
-const CACHE_NAME = 'haha-travel-pwa-v1';
+const CACHE_NAME = 'haha-travel-pwa-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -11,17 +11,15 @@ const STATIC_ASSETS = [
   './apple-touch-icon.png'
 ];
 
-// Install: Cache critical assets
+// Install: Cache critical assets and activate immediately
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Caching app shell assets');
-      return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
   );
 });
 
-// Activate: Clean old caches
+// Activate: Clean old caches immediately
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -37,39 +35,26 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Stale-while-revalidate for local assets, network-first for external CDN
+// Fetch: Network-first for own html/js to prevent stale cache bugs, cache fallback for offline
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
-
   const url = new URL(event.request.url);
 
-  // If local asset: cache-first with network fallback
+  // Network-first for own domain assets
   if (url.origin === location.origin) {
     event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          // Fetch fresh copy in background
-          fetch(event.request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
-            }
-          }).catch(() => {});
-          return cachedResponse;
+      fetch(event.request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const resClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
         }
-        return fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const resClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
-          }
-          return networkResponse;
-        });
-      })
+        return networkResponse;
+      }).catch(() => caches.match(event.request))
     );
     return;
   }
 
-  // External CDN (Tailwind, FontAwesome, Google Fonts): Network first with cache fallback
+  // External CDN: Network first with cache fallback
   event.respondWith(
     fetch(event.request).catch(() => caches.match(event.request))
   );
