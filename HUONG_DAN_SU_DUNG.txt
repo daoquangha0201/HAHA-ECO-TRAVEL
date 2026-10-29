@@ -1,0 +1,794 @@
+﻿================================================================================
+     HAHA OPERATING SYSTEM V1.0 - HỆ THỐNG ĐIỀU HÀNH DOANH NGHIỆP HỢP NHẤT
+        (CHUẨN DU LỊCH SINH THÁI - 1.000+ CTV BÌNH ĐẲNG - VẬN HÀNH TOÀN DIỆN)
+================================================================================
+
+Chào mừng Ban Giám đốc và Đội ngũ HaHa Eco Travel đến với HAHA OS V1.0!
+Hệ thống là giải pháp web thuần (HTML5/CSS3/JavaScript ES6), không cần cài đặt máy chủ
+phức tạp, chạy mượt mà trực tiếp trên mọi máy tính Windows (Edge, Chrome) và thiết bị di động.
+
+--------------------------------------------------------------------------------
+MỤC LỤC:
+  PHẦN 1: NGUYÊN TẮC CỐT LÕI & CHÍNH SÁCH CTV BÌNH ĐẲNG
+  PHẦN 2: BẢN ĐỒ 10 PHÂN HỆ NGHIỆP VỤ HỢP NHẤT
+  PHẦN 3: HƯỚNG DẪN VẬN HÀNH CHI TIẾT TỪNG PHÂN HỆ
+  PHẦN 4: NGUYÊN TẮC TÀI CHÍNH, ĐỐI SOÁT & SỔ QUỸ
+  PHẦN 5: AN TOÀN DỮ LIỆU, SAO LƯU & BỘ KIỂM THỬ TỰ ĐỘNG
+  PHẦN 6: TÀI KHOẢN MẪU & CÁCH ĐĂNG NHẬP NHANH
+================================================================================
+
+PHẦN 1: NGUYÊN TẮC CỐT LÕI & CHÍNH SÁCH CTV BÌNH ĐẲNG
+--------------------------------------------------------------------------------
+1. CTV BÌNH ĐẲNG - KHÔNG CẤP BẬC:
+   - HaHa Eco Travel xóa bỏ hoàn toàn cấp bậc CTV (không phân biệt CTV mới, lâu năm,
+     VIP hay trưởng nhóm).
+   - Mọi CTV đều là đối tác bình đẳng, hưởng chung một cơ chế minh bạch.
+2. HOA HỒNG GẮN THEO TỪNG TOUR CỤ THỂ:
+   - Quản trị viên (CEO) cấu hình và phê duyệt chính sách hoa hồng riêng cho từng Tour.
+   - Bất kỳ CTV nào giới thiệu thành công cùng một tour sẽ nhận cùng một mức hoa hồng
+     khi đáp ứng cùng điều kiện.
+3. BA PHƯƠNG PHÁP TÍNH HOA HỒNG (TUYỆT ĐỐI KHÔNG CỘNG DỒN):
+   - Phương pháp 1: Tỷ lệ % Doanh thu đơn hàng (Ví dụ: Tour Cát Tiên 2N1Đ - 7%).
+   - Phương pháp 2: Số tiền cố định trên mỗi khách đủ điều kiện (Ví dụ: Tour Miền Tây
+     200.000 đ/khách; Tour Đà Lạt 300.000 đ/khách).
+   - Phương pháp 3: Tỷ lệ % Lợi nhuận gộp (LNG = Doanh thu - Giá vốn NCC; Ví dụ: 15% LNG).
+   * Mỗi tour chỉ áp dụng đúng 1 phương pháp đã công khai, không tự động cộng chồng.
+4. CÔ LẬP DỮ LIỆU CTV:
+   - CTV chỉ được xem khách hàng, đơn tour, tiến độ thanh toán và hoa hồng của chính mình.
+   - CTV tuyệt đối không thể truy cập, sửa hoặc tải dữ liệu của CTV khác hoặc dữ liệu nội bộ.
+
+================================================================================
+PHẦN 2: BẢN ĐỒ 10 PHÂN HỆ NGHIỆP VỤ HỢP NHẤT
+================================================================================
+[Phân hệ 1] CEO Dashboard: Trung tâm điều hành thông minh, biểu đồ KPI, cảnh báo nợ,
+            dòng tiền, top doanh số tour và đóng góp CTV.
+[Phân hệ 2] CRM Khách Hàng: Quản lý data khách, phát hiện trùng lặp SĐT thời gian thực,
+            phân bổ Sale trực ban tự động.
+[Phân hệ 3] Mạng Lưới CTV: Quản lý 1.000+ CTV, lọc phân trang mượt mà <100ms, cấp mã,
+            khóa/mở khóa tài khoản, reset mật khẩu.
+[Phân hệ 4] Đơn Tour & Bán Hàng: Vòng đời đơn tour 8 trạng thái, thu tiền nhiều đợt
+            (PT-xxx), gạch nợ tức thời, chống thu vượt, tự động kích hoạt hoa hồng.
+[Phân hệ 5] Điều Hành & NCC: Quản lý bàn giao tour, danh bạ nhà cung cấp (NCC-xxx),
+            lập lệnh đặt dịch vụ (LDC-xxx) kiểm soát giá vốn.
+[Phân hệ 6] Tài Chính & Dòng Tiền: Sổ quỹ thu chi minh bạch, tách bạch Dòng tiền vào
+            (Cash In) và Dòng tiền ra (Cash Out), công nợ phải thu (A/R) và phải trả (A/P).
+[Phân hệ 7] Hoa Hồng & Đối Soát: Quy trình 3 bước (Chờ đối soát -> Đã duyệt chi -> Đã
+            thanh toán), xuất ủy nhiệm chi (UNC-xxx).
+[Phân hệ 8] Ngân Hàng Tour: Quản lý danh mục tour, giá niêm yết, ước tính giá vốn và
+            cấu hình chính sách hoa hồng công khai.
+[Phân hệ 9] Quản Trị Hệ Thống: Phân quyền vai trò RBAC, Hộp đen Audit Log lưu vết bất biến,
+            bộ kiểm thử tự động 20 test suites, sao lưu/phục hồi JSON mã hóa SHA-256.
+[Phân hệ 10] Cổng Cộng Tác Viên (CTV Portal): Không gian độc lập cho CTV nạp lead, theo
+             dõi đơn hàng, hoa hồng và bảng chính sách tour công khai.
+
+================================================================================
+PHẦN 3: HƯỚNG DẪN VẬN HÀNH CHI TIẾT TỪNG PHÂN HỆ
+================================================================================
+
+1. CÁCH KHỞI CHẠY HỆ THỐNG TRÊN WINDOWS:
+   - Vào thư mục dự án HAHA_OPERATING_SYSTEM_V1.0.
+   - Nhấp đúp chuột trái vào tệp "index.html" (hoặc nhấp chuột phải chọn Open with -> Microsoft Edge / Google Chrome).
+   - Màn hình đăng nhập hiển thị:
+     + Nhân viên nội bộ: Chọn vai trò đăng nhập nhanh hoặc điền Email/Mật khẩu.
+     + Cộng tác viên: Bấm nút "Đăng nhập dành cho CTV" để vào cổng CTV riêng.
+
+2. QUY TRÌNH TIẾP NHẬN KHÁCH & ĐẨY SALE (CRM -> SALE):
+   - CTV hoặc Nhân viên bấm "+ Thêm khách hàng" (hoặc CTV bấm "+ Gửi khách tiềm năng").
+   - Nhập Họ tên, Số điện thoại, Nhu cầu tour, Số khách dự kiến.
+   - Cơ chế Chống trùng số điện thoại: Hệ thống tự động quét toàn bộ kho dữ liệu. Nếu số điện thoại
+     đã tồn tại, hệ thống cảnh báo đỏ ngay lập tức, hiển thị rõ người đang chăm sóc và từ chối ghi đè.
+   - Hệ thống tự động gán mã CTV giới thiệu và phân bổ luân phiên cho nhân viên Sale.
+
+3. QUY TRÌNH TẠO ĐƠN TOUR & BÁN HÀNG (PHÂN HỆ 4):
+   - Khi khách đồng ý đi tour, bấm "+ Tạo Đơn Tour Mới".
+   - Chọn khách hàng từ CRM: Hệ thống tự động điền Tên khách, SĐT và CTV giới thiệu (nếu có).
+   - Chọn Tour từ Ngân hàng Tour: Hệ thống tự động cập nhật Đơn giá niêm yết.
+   - Nhập Số lượng khách và Ngày khởi hành: Hệ thống tự động tính Tổng tiền = Số khách x Đơn giá.
+   - Điều chỉnh CTV nguồn (nếu cần): Phải có quyền quản trị và điền rõ lý do điều chỉnh để lưu Audit Log.
+   - Bấm "Tạo Đơn Tour": Đơn tour được cấp mã duy nhất dạng "BK-2026-xxx", trạng thái "Mới tạo".
+
+4. THEO DÕI THANH TOÁN & GẠCH NỢ KHÁCH HÀNG:
+   - Trong bảng đơn tour, bấm vào Mã đơn hoặc nút Chi tiết (icon mắt).
+   - Bấm "+ Thu tiền khách" (hoặc biểu tượng thẻ ngân hàng):
+     + Nhập số tiền thu (hoặc bấm nút "Thu đủ còn lại" để hệ thống tự điền số tiền nợ).
+     + Chọn phương thức: Chuyển khoản, Tiền mặt, Thẻ tín dụng, Cổng thanh toán.
+     + Nhập mã tham chiếu ngân hàng và ghi chú.
+   - Cơ chế Chống thu vượt & Thu âm: Hệ thống chặn hoàn toàn các khoản tiền âm hoặc số tiền
+     vượt quá công nợ còn lại của đơn tour.
+   - Khi khoản thu được xác nhận:
+     + Tự động sinh phiếu thu hợp lệ dạng "PT-xxx".
+     + Đơn tour tự động chuyển trạng thái: "Đã đặt cọc" (nếu thu một phần) hoặc "Đã thanh toán đủ".
+     + Cập nhật tức thời tiến trình thanh toán (%) và giảm trừ số tiền còn phải thu.
+     + Tự động kích hoạt phiếu hoa hồng CTV tương ứng sang Phân hệ 7 ở trạng thái "Chờ đối soát".
+     + Ghi nhận dòng tiền thực thu (Cash In) vào Sổ quỹ Tài chính (Phân hệ 6).
+
+5. ĐIỀU HÀNH TOUR, NHÀ CUNG CẤP & BÀN GIAO "MỚI TIẾP NHẬN" (PHÂN HỆ 5):
+   - KHU VỰC "MỚI TIẾP NHẬN TỪ SALE" (TAB 1):
+     + Khi Sale chốt tour thành công (từ Báo giá hoặc tạo Đơn tour), hệ thống tự động sinh thông báo
+       bàn giao sang Điều hành và hiển thị đơn tour trong mục "📥 Mới Tiếp Nhận Từ Sale".
+     + Phía gửi (Sale) có xác nhận đã gửi trong Outbox.
+     + Phía nhận (Điều hành) có thông báo chưa đọc (Inbox, Chuông thông báo đỏ, Badge Phân hệ 5).
+     + Điều hành bấm "📥 Tiếp nhận tour": Đơn tour chính thức chuyển vào "🚍 Lịch Khởi Hành",
+       thông báo bàn giao chuyển sang "Đã tiếp nhận" và tự động gửi phản hồi ngược lại cho Sale.
+   - Quản lý danh bạ Nhà cung cấp (Khách sạn, Vận chuyển xe, Nhà hàng, Hướng dẫn viên, Vé tham quan):
+     Gắn kèm Chính sách công nợ (Thanh toán ngay, Công nợ 7/15/30 ngày, Cọc 50%...) và Hạn mức công nợ tối đa.
+   - Lập Lệnh đặt dịch vụ (LDC-xxx) gắn trực tiếp với Đơn tour:
+     + Chọn hình thức "Thanh toán ngay": Chuyển trạng thái sang "Chờ KT duyệt chi" (WAIT_PAY_APPROVAL).
+     + Chọn hình thức "Công nợ đối tác": Chuyển trạng thái sang "Chờ KT duyệt nợ" (WAIT_DEBT_APPROVAL).
+   - Kế toán xem và duyệt lệnh đặt dịch vụ (Phân hệ 5 & Phân hệ 6):
+     + Bấm "Duyệt chi & Thanh toán": Chi tiền ra (UNC/Tiền mặt), đơn chuyển "Đã thanh toán 100%", ghi sổ quỹ chi.
+     + Bấm "Duyệt công nợ NCC": Ghi nhận công nợ phải trả A/P, đơn chuyển "Đã ghi nhận công nợ".
+     + Bấm "Từ chối duyệt": Trả lệnh về cho Điều hành rà soát lại nếu chưa hợp lệ.
+   - NGUYÊN TẮC BẤT BIẾN DỮ LIỆU & PHÂN ĐỊNH THẨM QUYỀN (IMMUTABILITY & SEPARATION OF DUTIES):
+     Kế toán tuyệt đối KHÔNG ĐƯỢC CHỈNH SỬA các thông tin hồ sơ khách hàng, giá tour, chi phí thỏa thuận
+     hay trạng thái vận hành mà Sale và Điều hành đã chốt trước đó. Hệ thống khóa cứng các nút chỉnh sửa/hủy
+     và chặn tự động ở tầng logic dữ liệu.
+   - Theo dõi trạng thái vận hành của Tour: "Mới tiếp nhận" -> "Chưa khởi hành" -> "Đang đi tour" -> "Hoàn thành tour".
+
+6. ĐỐI SOÁT & CHI TRẢ HOA HỒNG CTV (PHÂN HỆ 7):
+   - Phiếu hoa hồng tự động sinh khi đơn tour thu tiền cọc/đủ.
+   - Kế toán và CEO kiểm tra căn cứ tính hoa hồng theo đúng chính sách Tour.
+   - Bấm "Duyệt chi": Phiếu chuyển sang "Đã duyệt chi".
+   - Bấm "Chi trả" (Mở modal chuyển khoản): Nhập số tài khoản ngân hàng, mã ủy nhiệm chi "UNC-xxx"
+     và bấm "Xác nhận chuyển tiền".
+   - Phiếu hoa hồng hoàn tất ("Đã thanh toán"), ghi nhận chi phí vào Sổ quỹ, và CTV nhìn thấy
+     khoản tiền về tài khoản trong Cổng CTV của mình.
+   - TUYỆT ĐỐI KHÔNG TỰ ĐỘNG THANH TOÁN mà phải có sự đối soát và phê duyệt của con người.
+
+================================================================================
+PHẦN 4: NGUYÊN TẮC TÀI CHÍNH, ĐỐI SOÁT & SỔ QUỸ
+================================================================================
+1. TÁCH BẠCH DÒNG TIỀN:
+   - Dòng tiền vào (Cash In): Chỉ ghi nhận khi có Phiếu thu (PT-xxx) thực thu từ khách hàng.
+   - Dòng tiền ra (Cash Out): Ghi nhận khi chi trả hoa hồng (UNC-xxx) hoặc thanh toán nhà cung cấp (LDC-xxx).
+   - Dòng tiền thuần (Net Cash Flow) = Tổng thực thu - Tổng thực chi.
+2. PHÂN ĐỊNH RÕ RÀNG:
+   - Giá trị hợp đồng (Tổng giá trị các đơn tour đã ký).
+   - Doanh thu thực thu (Số tiền khách đã thanh toán vào tài khoản/tiền mặt).
+   - Công nợ phải thu (A/R): Tiền khách còn nợ đơn tour.
+   - Công nợ phải trả (A/P): Hoa hồng đã duyệt chờ chuyển khoản và tiền cọc nhà cung cấp còn nợ.
+
+================================================================================
+PHẦN 5: AN TOÀN DỮ LIỆU, SAO LƯU & BỘ KIỂM THỬ TỰ ĐỘNG
+================================================================================
+1. HỘP ĐEN AUDIT LOG BẤT BIẾN:
+   - Mọi hoạt động trọng yếu: Tạo đơn, sửa CTV, xác nhận thu tiền, duyệt chi, khóa tài khoản...
+     đều được ghi nhận vào nhật ký hệ thống kèm dấu thời gian ISO, IP/Client và tên người thực hiện.
+2. SAO LƯU & KHÔI PHỤC DỮ LIỆU (PHÂN HỆ 9):
+   - Xuất bản sao lưu: Bấm nút "Xuất Bản Sao Lưu (JSON)", hệ thống tạo tệp sao lưu có gắn phong bì
+     kiểm tra tính toàn vẹn SHA-256 kèm phiên bản hệ thống.
+   - Khôi phục an toàn: Bấm "Khôi phục dữ liệu", tải tệp JSON lên; hệ thống xác thực tính hợp lệ
+     trước khi khôi phục, đảm bảo không bị lỗi dữ liệu chắp vá.
+3. BỘ KIỂM THỬ TỰ ĐỘNG TOÀN DIỆN (21 SUITES - 100% PASS):
+   - Trong Phân hệ 9, bấm "Khởi chạy Bộ Kiểm Thử Tự Động".
+   - Hệ thống tự động chạy 21 nhóm kịch bản:
+     (1) Phân quyền RBAC.
+     (2) Cô lập dữ liệu CTV (Scoping).
+     (3) Chống trùng lặp số điện thoại.
+     (4) Tính hoa hồng % Doanh thu.
+     (5) Tính hoa hồng Cố định/Khách.
+     (6) Tính hoa hồng % Lợi nhuận gộp (LNG).
+     (7) Khớp đúng công nợ đơn tour & phiếu thu.
+     (8) Chặn thu tiền âm và vượt giá trị đơn.
+     (9) Cân đối sổ quỹ dòng tiền thực thu (Cash In).
+     (10) Kiểm thử tải & phân trang 1.000+ CTV (<100ms).
+     (11) Rà soát linh hoạt số khách (chấp nhận 100, 1.000, 100.000 pax; từ chối âm/thập phân).
+     (12) Thu toàn bộ công nợ lớn 1.625.000.000 VNĐ thành công, công nợ sau thu = 0 đ.
+     (13) Thu tiền một phần qua nhiều đợt và giảm trừ công nợ chính xác, chống thu vượt/thu âm.
+     (14) Bảo đảm toàn vẹn dữ liệu số lớn và an toàn lưu trữ JSON (Number Safe Integer).
+     (15) Đồng bộ số liệu tài chính duy nhất (Single Source of Truth) giữa Đơn tour 720.000.000 đ,
+          CRM Khách hàng và Cổng CTV; hiển thị đúng tiền thực thu, cọc một phần và khách chưa phát sinh đơn.
+     (16) Luồng tích hợp Chốt tour → Báo giá → Đơn tour → Tài chính → Hoa hồng (Strict Idempotency).
+     (17) Cô lập Hoa hồng Đa đơn tour của cùng 1 khách hàng & Nghiệm thu Điều hành tour (Chỉ duyệt chi hoa hồng khi tour hoàn thành VÀ đơn tour đã thanh toán đủ 100%).
+     (18) Ràng buộc Toàn vẹn Tham chiếu (Cascade / Orphan Guard) chặn xóa mồ côi & Sinh mã Tự tăng An toàn (generateNextCode quét Math.max, chống trùng lặp khi xóa bản ghi).
+     (19) Chu trình Lệnh đặt dịch vụ NCC (Điều hành lập lệnh Thanh toán ngay / Công nợ đối tác -> Kế toán duyệt chi / duyệt công nợ A/P) & Bất biến Dữ liệu Immutability (Khóa cứng không cho Kế toán sửa thông tin khách hàng, tiền bạc, hoặc trạng thái vận hành mà Sale/Điều hành đã chốt).
+     (20) Hệ thống Thông Báo & Chuyển Giao Liên Phòng Ban (Inter-Departmental Handover & Notification): Sale chốt tour chuyển giao Điều hành trong phần Mới tiếp nhận; Phía gửi có thông báo đã gửi, phía nhận có thông báo chưa đọc; Tiếp nhận đoàn tour thành công và tự động phản hồi lại Sale.
+     (21) 20 Kịch Bản Lữ Hành Thực Tế, Quyết Toán P&L Đoàn, Rooming List Toàn Vẹn & CSAT Rating: 20 đơn tour (DH-001 -> DH-020) vận hành hoàn hảo; P&L tự động đối soát chuẩn (LNG 2.728M, Margin 28.4%); Rooming list phân phòng chuẩn; Đơn hủy hoàn cọc 17.5M; B2B nợ 256M & NCC 160M; CSAT 5 sao.
+
+================================================================================
+PHẦN 6: DANH SÁCH 20 KỊCH BẢN ĐƠN TOUR & BỘ MÁY DOANH NGHIỆP DU LỊCH 100%
+================================================================================
+1. DANH SÁCH 20 ĐƠN TOUR CHẠY THỬ MẪU (DH-001 ĐẾN DH-020):
+   • DH-001: Khách lẻ FIT (Cát Tiên 4 khách, 9.6M, đã trả 100%, tour hoàn thành, hoa hồng % DT đã chi trả, CSAT 5 sao).
+   • DH-002: Gia đình nghỉ dưỡng (Bến Tre 4 khách, 7.8M, đã cọc 4M, còn nợ 3.8M, chưa khởi hành, lệnh NCC cọc 50%).
+   • DH-003: Nhóm bạn trẻ Trekking (Mù Cang Chải 4 khách, 18.5M, hoa hồng % LNG, chưa khởi hành, chưa thanh toán).
+   • DH-004: Doanh nghiệp MICE siêu lớn (Tập Đoàn V-Star 300 khách, 720M, đã trả 100%, mới tiếp nhận bàn giao từ Sale).
+   • DH-005: Trường học dã ngoại (THPT Chuyên Lê Hồng Phong 120 học sinh & GV, 180M, cọc 90M, hoa hồng cố định 50k/pax).
+   • DH-006: Khách trực tiếp (Direct Booking không qua CTV, 15 khách, 45M, đang đi tour, không phát sinh hoa hồng).
+   • DH-007: Khách hủy tour đột xuất (Chị Oanh 10 khách, 35M, phạt cọc 50%, hoàn 17.5M qua phiếu REF-001, hủy hoa hồng).
+   • DH-008: Doanh nghiệp B2B Trả sau (Techcombank 80 khách, 256M, nợ 15 ngày sau tour, lệnh NCC 160M nợ 30 ngày).
+   • DH-009: Private VIP Tour (Doanh nhân David Trần 8 khách, 64M, Villa 5 sao Cát Tiên, trả 100%, hoa hồng 6.4M đã chi).
+   • DH-010: Trả góp nhiều đợt Early Bird (CLB Nhiếp Ảnh 25 khách, 75M, Đợt 1 30%, Đợt 2 40% -> Đã thu 52.5M, nợ 22.5M).
+   • DH-011: Đoàn Inbound quốc tế (Jean-Pierre Dubois 12 khách Pháp, 48M, HDV tiếng Pháp, trả 100%, có danh sách passport).
+   • DH-012: Phụ thu nâng cấp phòng đơn (Chị Thảo My 6 khách, gốc 18M + phụ thu 3M phòng đơn = 21M, đã thanh toán đủ).
+   • DH-013: Hội thảo Y khoa (Bệnh viện ĐK Sài Gòn 50 bác sĩ, 150M, cọc 100M, còn nợ 50M, lệnh sảnh hội thảo & tiệc gala).
+   • DH-014: Gia đình 3 thế hệ (Bác Thành 12 thành viên: 8 lớn, 2 trẻ em 70%, 2 bé 0% = 9.4 suất vé = 22.56M, trả đủ 100%).
+   • DH-015: Áp Voucher ưu đãi tri ân (Anh Long 8 khách, gốc 25.6M giảm 2.6M = 23M, hoa hồng tính trên 23M sau giảm trừ).
+   • DH-016: Teambuilding sinh tồn (Startup AI Nexus 40 khách, 128M + phát sinh lều trại cứu hộ 8M = 136M, đã quyết toán).
+   • DH-017: Tour xong nhưng nợ tiền B2B (Công ty Vinacon 20 kỹ sư, 60M, mới trả 40M, nợ 20M, hệ thống tự động khóa hoa hồng).
+   • DH-018: Đơn tour liên kết 4 NCC (Chị Mỹ Linh 16 khách, 51.2M, liên kết Khách sạn, Xe 29 chỗ, Nhà hàng Suối Mơ, HDV).
+   • DH-019: Doanh nghiệp tổ chức 2 tour cùng tháng (V-Star Tour 2 Đà Lạt 40 khách, 128M, phân tách độc lập hợp đồng và dòng tiền).
+   • DH-020: Đoàn Caravan tự lái (Caravan Club 15 xe / 45 khách, 135M, cọc 70M, còn nợ 65M thanh toán tại điểm xuất phát).
+
+2. 5 TÍNH NĂNG CỐT LÕI BIẾN HỆ THỐNG THÀNH PHẦN MỀM LỮ HÀNH 100%:
+   (1) Danh sách hành khách & Phân chia phòng (Passenger Manifest & Rooming List): Quản lý họ tên, giới tính, CCCD, phân phòng, ghi chú ăn kiêng/ăn chay. Có nút "+ Thêm hành khách" và "🖨️ In Rooming List".
+   (2) Bảng quyết toán lãi lỗ từng đoàn (Tour Profit & Loss - P&L): Tự động tính toán Doanh thu thực (A) - Giá vốn NCC COGS (B) - Hoa hồng CTV (C) = Lợi nhuận gộp (LNG) và Tỷ suất lợi nhuận Gross Margin (%). Có nút "🖨️ In Bảng Quyết Toán".
+   (3) Lịch trình vận hành chi tiết theo ngày (Day-by-Day Itinerary): Hiển thị timeline kế hoạch di chuyển, ăn uống, tham quan cho HDV, lái xe và khách hàng.
+   (4) Phiếu xác nhận dịch vụ gửi Nhà cung cấp (Tour Service Confirmation Voucher): Tài liệu nghiệp vụ chuẩn hóa có mã VC-[Mã Lệnh], thông tin dịch vụ, đơn giá, tiến độ thanh toán, chữ ký 3 bên và nút "🖨️ In Voucher / Lưu PDF".
+   (5) Đánh giá chất lượng dịch vụ & CSAT Rating: Chấm điểm 1-5 sao và tiêu chí thành phần (Phương tiện, Khách sạn, Nhà hàng, Hướng dẫn viên), kèm nhận xét của trưởng đoàn.
+
+================================================================================
+PHẦN 7: TÀI KHOẢN MẪU & CÁCH ĐĂNG NHẬP NHANH
+================================================================================
+1. ĐĂNG NHẬP NỘI BỘ (STAFF):
+   - CEO (Tổng Giám Đốc):     ceo@haha.vn      / MatKhau@123 (Xem & duyệt toàn bộ 10 phân hệ)
+   - Trưởng phòng Sales:      salelead@haha.vn / MatKhau@123 (Phụ trách CRM, Đơn tour, Bán hàng)
+   - Điều hành Tour:          ops@haha.vn      / MatKhau@123 (Điều hành tour, quản lý Nhà cung cấp)
+   - Kế toán Trưởng:          ketoan@haha.vn   / MatKhau@123 (Thu tiền, Sổ quỹ, Chi hoa hồng)
+   * Có thể bấm các nút Đăng nhập nhanh (Quick Login) trên thanh Demo bar ở màn hình đăng nhập.
+
+2. ĐĂNG NHẬP CỘNG TÁC VIÊN (CTV):
+   - CTV Nguyễn Văn An:       CTV-001          / MatKhau@123 (Mã giới thiệu: HAHA-AN01)
+   - CTV Trần Thị Bình:       CTV-002          / MatKhau@123 (Mã giới thiệu: HAHA-BINH02)
+
+================================================================================
+PHẦN 8: CHU TRÌNH CHUYỂN GIAO LIÊN PHÒNG BAN & PHÂN QUYỀN CHUYÊN MÔN CHUẨN LỮ HÀNH
+================================================================================
+1. CƠ CHẾ THÔNG BÁO VÀ CHUYỂN GIAO ĐA CÔNG ĐOẠN (CÓ CHẤM ĐỎ & SỐ ĐẾM CHƯA ĐỌC):
+   • CÔNG ĐOẠN 1 (CTV -> SALE):
+     - Khi CTV gửi khách hàng mới trên Cổng CTV (Module 10), hệ thống tự động phát
+       thông báo liên phòng ban tức thời gửi sang bộ phận Sale.
+     - Phía CTV: Hộp thư đi (Outbox) ghi nhận thông báo đã gửi.
+     - Phía Sale: Chuông thông báo Topbar nhảy số đỏ, Phân hệ 2 (CRM) hiện chấm đỏ
+       chưa đọc và số đếm tại tab "Mới tiếp nhận".
+     - Nhân viên Sale bấm "📞 Tiếp nhận": Trạng thái khách chuyển sang "Đang tư vấn",
+       hệ thống tự động phát thông báo phản hồi về cho CTV để đối tác yên tâm.
+
+   • CÔNG ĐOẠN 2 (SALE -> ĐIỀU HÀNH & KẾ TOÁN):
+     - Khi Sale chốt tour thành công từ Báo giá, đơn tour DH-xxx được sinh ra với
+       hợp đồng và giá trị cố định.
+     - Hệ thống tự động bắn thông báo sang Điều hành (trong tab "Mới tiếp nhận" kèm
+       chấm đỏ unread) và bắn thông báo sang Kế toán để theo dõi thu cọc/công nợ.
+     - Điều hành bấm "📥 Tiếp nhận tour": Đoàn chuyển sang lịch vận hành và tự động
+       gửi thông báo xác nhận ngược về cho Sale.
+
+   • CÔNG ĐOẠN 3 (ĐIỀU HÀNH -> KẾ TOÁN):
+     - Điều hành làm việc với Nhà cung cấp (Khách sạn, Xe, Nhà hàng, Hướng dẫn viên),
+       lập Lệnh đặt dịch vụ (LDC-xxx) kèm chính sách thanh toán ngay hoặc công nợ.
+     - Lệnh dịch vụ lập tức chuyển sang trạng thái chờ duyệt tại Kế toán (Phân hệ 7).
+     - Kế toán kiểm tra và ký duyệt: Thông báo phê duyệt được gửi về cho Điều hành để
+       xuất Phiếu Xác Nhận Dịch Vụ Tour (Service Voucher) gửi chính thức cho NCC.
+
+   • CÔNG ĐOẠN 4 (KẾ TOÁN -> CTV):
+     - Khi đoàn tour kết thúc và khách hàng thanh toán đủ 100%, khoản hoa hồng CTV
+       được mở khóa sang trạng thái "Chờ duyệt đối soát".
+     - Kế toán duyệt chi và nhập mã ủy nhiệm chi (UNC) ngân hàng: Khoản tiền chuyển sang
+       "Đã thanh toán" và gửi thông báo trực tiếp đến Cổng CTV của đối tác.
+
+2. NGUYÊN TẮC PHÂN QUYỀN CHUYÊN MÔN BẤT BIẾN (SEPARATION OF CONCERNS):
+   • KẾ TOÁN (Chỉ truy cập Phân hệ 6 & Phân hệ 7):
+     - Chuyên môn: Quản lý dòng tiền, lập phiếu thu tiền khách, theo dõi công nợ B2B,
+       duyệt lệnh đặt dịch vụ NCC và chi trả hoa hồng CTV.
+     - Nghiêm cấm: Kế toán hoàn toàn không can thiệp, không chỉnh sửa hồ sơ khách của Sale,
+       không sửa báo giá tour, không can thiệp phân công xe/HDV của Điều hành.
+     - Tự động điều hướng: Kế toán đăng nhập sẽ vào thẳng Phân hệ 6 (Tài chính & Thu chi).
+
+   • ĐIỀU HÀNH (Chỉ truy cập Phân hệ 5 & Phân hệ 8):
+     - Chuyên môn: Tiếp nhận đoàn tour đã chốt, quản lý Rooming List, phân phòng,
+       lịch trình, đặt dịch vụ NCC và xuất Service Voucher.
+     - Không thấy báo giá Sale: Điều hành chỉ thấy thông tin đoàn cần vận hành, không phải
+       làm việc với giá báo của Sale, không can thiệp đàm phán giá bán khách hàng.
+     - Tự động điều hướng: Điều hành đăng nhập sẽ vào thẳng Phân hệ 5 (Điều hành & NCC).
+
+   • SALE (Truy cập Phân hệ 2, 3, 4, 8):
+     - Chuyên môn: Chăm sóc khách hàng, tư vấn báo giá, chốt đơn tour, phối hợp CTV.
+     - Không can thiệp đặt xe/khách sạn của Điều hành, không can thiệp sổ quỹ của Kế toán.
+     - Tự động điều hướng: Sale đăng nhập sẽ vào thẳng Phân hệ 2 (CRM Khách hàng).
+
+   • GIÁM ĐỐC / CEO (Toàn quyền Phân hệ 1 đến 9):
+     - Toàn quyền giám sát hợp nhất thời gian thực, bảng P&L tổng thể và Hộp đen Audit Log.
+
+================================================================================
+PHẦN 9: TRUNG TÂM RADAR GIÁM SÁT 360° CỦA CEO & BỘ CÔNG CỤ PHÒNG CHỐNG GIAN LẬN LỮ HÀNH
+================================================================================
+
+1. NGHIÊN CỨU TỪ CÁC PHẦN MỀM LỮ HÀNH HÀNG ĐẦU (TRAVELMASTER, TOURPLAN, LEMAX):
+   • Chu trình khép kín Tour Lifecycle: Khách hàng -> Báo giá -> Costing chiết tính ->
+     Điều hành nhà cung cấp -> Quyết toán thực tế (P&L Variance) -> Đánh giá chất lượng (CSAT).
+   • Giám sát sai lệch chi phí (Variance Analysis): Phát hiện mọi chênh lệch giữa giá
+     dự toán bán hàng và chi phí ký với nhà cung cấp.
+
+2. 7 CHIÊU TRÒ GIAN LẬN KINH ĐIỂN VÀ GIẢI PHÁP CÔNG NGHỆ KHẮC CHẾ TRONG HAHA OS:
+   • GIAN LẬN 1: Kê khống / Nâng giá dịch vụ Nhà cung cấp (Supplier Overpricing / Kickback)
+     - Chiêu trò: Điều hành hoặc HDV thông đồng với khách sạn, nhà xe kê giá cao hơn thực tế
+       để chia nhau tiền chênh lệch ngoài sổ sách.
+     - Khắc chế: Bảng giá hợp đồng niêm yết (Price Master) được CEO phê duyệt. Thuật toán Radar
+       tự động so khớp từng lệnh đặt NCC (LDC-xxx). Nếu giá thỏa thuận > đơn giá hợp đồng,
+       hệ thống lập tức gắn cờ đỏ "🚨 Lệch giá NCC" và cảnh báo thẳng lên màn hình CEO.
+
+   • GIAN LẬN 2: Tráo đổi hạ tiêu chuẩn dịch vụ (Service Downgrading / "Bán hoa lấy rơm")
+     - Chiêu trò: Thu tiền khách sạn 4 sao / suất ăn 250k nhưng đưa khách vào khách sạn 3 sao
+       hoặc suất ăn 180k để ăn chênh lệch.
+     - Khắc chế: Khảo sát CSAT thời gian thực 4 tiêu chí (Xe, Phòng nghỉ, Ẩm thực, Hướng dẫn viên).
+       Nếu đánh giá < 4 sao hoặc có phàn nàn, hệ thống kích hoạt cảnh báo chất lượng lên CEO.
+
+   • GIAN LẬN 3: "Luồn cò", ăn hoa hồng ngầm tại điểm mua sắm (Unreported Shopping Commission)
+     - Chiêu trò: HDV/lái xe tự ý cắt bớt lịch trình tham quan để đưa đoàn vào điểm mua sắm
+       hưởng hoa hồng 20-30% mà không khai báo công ty.
+     - Khắc chế: Timeline lịch trình số (Digital Itinerary Tracker) kết hợp phiếu khảo sát hỏi
+       thẳng khách hàng về tình trạng có bị ép mua sắm ngoài chương trình hay không.
+
+   • GIAN LẬN 4: Ém tiền mặt / Thu cọc nộp chậm / Chiếm dụng quỹ (Cash Aging & Pocketing)
+     - Chiêu trò: Thu tiền mặt hoặc chuyển khoản cá nhân nhưng không nộp ngay vào quỹ công ty.
+     - Khắc chế: Radar Cảnh báo Rủi ro Dòng tiền (Cash Aging Alert) quét các đoàn tour có ngày
+       khởi hành trong 7 ngày tới nhưng tỷ lệ thanh toán < 50%, ngăn ngừa rủi ro nợ xấu hoặc bùng tour.
+
+   • GIAN LẬN 5: Bắt tay hủy tour ảo / Làm giả hồ sơ hoàn tiền để rút ruột quỹ
+     - Chiêu trò: Dựng lý do khách hủy để làm phiếu hoàn cọc giả mạo rút tiền công ty.
+     - Khắc chế: Quy trình phê duyệt hoàn tiền nghiêm ngặt; Radar "🛡️ Hoàn tiền / Đơn hủy"
+       theo dõi riêng từng khoản hoàn trả, đối chiếu chứng từ gốc và ghi vết vào Hộp đen Audit.
+
+   • GIAN LẬN 6: "Tuồn data", bán khách cho công ty ngoài (Lead Theft / Data Leakage)
+     - Chiêu trò: Sale báo khách "không có nhu cầu / hủy tư vấn" nhưng đem data bán cho công ty ngoài.
+     - Khắc chế: Báo cáo tỷ lệ chuyển đổi CRM (Conversion Rate Drop Alert); CEO có quyền tra soát
+       danh sách khách bị hủy để phúc tra ngẫu nhiên chất lượng chăm sóc.
+
+   • GIAN LẬN 7: Đội chi phí tour thực tế so với Báo giá ban đầu (Cost Overrun Fraud)
+     - Chiêu trò: Khai khống các khoản "chi phí dọc đường" để giảm lợi nhuận công ty.
+     - Khắc chế: Radar "📈 Vượt Dự Toán Chi Phí" tự động đối soát: nếu Tổng COGS thực tế > Dự toán
+       ban đầu của Sale, hệ thống lập tức gắn cờ đỏ và tính toán chính xác số tiền đội chi phí.
+
+3. HƯỚNG DẪN CEO SỬ DỤNG TRUNG TÂM RADAR GIÁM SÁT 360° (PHÂN HỆ 1):
+   • Bấm nút "⚡ Quét Rủi Ro Toàn Hệ Thống": Hệ thống kiểm toán tự động quét 20 đoàn tour và
+     phát hiện ngay các bất thường về giá NCC, chi phí đội, công nợ và sự cố.
+   • Sử dụng Bộ Lọc Nhanh:
+     - "Tất cả đoàn": Giám sát toàn cảnh hoạt động lữ hành.
+     - "🚨 Có cảnh báo rủi ro": Lọc ra ngay các đoàn có lệch giá NCC, đội chi phí, nợ > 50%.
+     - "⚠️ Có sự cố": Lọc ra các đoàn có phàn nàn phát sinh để chỉ đạo xử lý tại chỗ.
+     - "🧭 Sắp/Đang đi tour": Giám sát đoàn đang vận hành thực tế.
+     - "💰 Còn nợ tiền": Đôn đốc thu hồi dòng tiền trước khởi hành.
+   • Nút "🔍 Soi 360°": Mở hồ sơ đầy đủ của đoàn (Hợp đồng, Rooming List phân phòng, P&L thực tế,
+     Voucher NCC, Lịch trình, CSAT và Nhật ký sự cố).
+   • Nút "🚨 Ghi sự cố": Ghi nhận ngay sự cố phát sinh tại hiện trường (Vận chuyển, Lưu trú, Ăn uống,
+     HDV, Sức khỏe), xác định mức độ (Thấp/Trung bình/Cao/Khẩn cấp), biện pháp xử lý và chi phí đền bù.
+
+================================================================================
+PHẦN 10: HƯỚNG DẪN DÀNH CHO CỘNG TÁC VIÊN (CTV): KHO TOUR MỞ BÁN & LỰA CHỌN PHÂN PHỐI
+================================================================================
+Tại Cổng CTV (Phân hệ 10), đối tác CTV được trao quyền chủ động tiếp cận toàn bộ Kho tour
+của công ty để lựa chọn những sản phẩm phù hợp nhất với thế mạnh và tệp khách hàng của mình:
+
+1. XEM KHO TOUR CÔNG TY & TRẠNG THÁI HOẠT ĐỘNG:
+   • Truy cập Tab "🎒 Kho Tour Mở Bán & Lựa Chọn Bán":
+     - Hệ thống hiển thị toàn bộ các tour du lịch sinh thái của HaHa Eco Travel.
+     - 4 Thẻ KPI trên cùng cập nhật thời gian thực:
+       + "Tổng Kho Tour": Tổng số tour hiện có trong kho.
+       + "🟢 Đang Hoạt Động (Mở bán)": Các tour đang mở bán, sẵn sàng nhận khách và giữ chỗ.
+       + "⏸️ Tạm Dừng Nhận Khách": Các tour tạm đóng do bảo trì tuyến hoặc trái mùa (ví dụ: mùa bão lũ).
+       + "⭐ Tour Bạn Chọn Bán": Số lượng tour bạn đã đưa vào danh mục phân phối trọng tâm.
+
+2. PHÂN BIỆT RÕ TOUR ĐANG HOẠT ĐỘNG VÀ TẠM DỪNG:
+   • Tour Đang Hoạt Động (Mở Bán):
+     - Hiển thị huy hiệu xanh lá "🟢 Đang hoạt động (Mở bán)" có hiệu ứng pulse.
+     - Nút "🚀 Bán tour ngay" sáng rõ, cho phép bấm mở form gửi khách tư vấn tức thì.
+   • Tour Tạm Dừng:
+     - Hiển thị huy hiệu xám "⏸️ Tạm dừng (Lý do cụ thể)".
+     - Nút "Tạm dừng bán" được làm mờ (disabled) để bảo vệ CTV và khách hàng không đặt nhầm.
+
+3. LỰA CHỌN TOUR MUỐN PHÂN PHỐI (CHỌN BÁN / BỎ CHỌN):
+   • Trên mỗi thẻ tour có nút "⭐ Chọn bán tour này" / "✓ Đang chọn bán":
+     - Bấm nút này để thêm hoặc bỏ tour khỏi danh mục phân phối cá nhân.
+     - Tour đã chọn sẽ được viền vàng nổi bật và gắn huy hiệu "⭐ Bạn đang chọn bán".
+     - Sử dụng bộ lọc "⭐ Tour tôi đã chọn bán" để tập trung theo dõi các sản phẩm mình chuyên phân phối.
+
+4. BỘ CÔNG CỤ BÁN HÀNG DÀNH CHO CTV (SALES KIT & MARKETING TOOLKIT):
+   • Nút "🔗 Sao chép link":
+     - Tự động tạo Link tiếp thị độc quyền gắn mã Ref của CTV:
+       https://hahaeco.vn/tours/{MA_TOUR}?ref={MA_REF_CTV}
+     - Khách bấm vào link sẽ được hệ thống tự động ghi nhận thuộc về CTV đó.
+   • Nút "📖 Sales Kit & Lịch trình":
+     - Mở cửa sổ thông tin bán hàng độc quyền: Thời lượng, giá bán, mức hoa hồng, điểm nổi bật.
+     - Cung cấp sẵn "Đoạn văn mẫu tư vấn khách hàng" (Sales Pitch) được biên soạn hấp dẫn.
+     - Bấm nút "📋 Copy bài mẫu" để dán ngay vào Zalo, Facebook, TikTok hoặc tin nhắn cho khách.
+
+5. QUY TRÌNH BÁN TOUR & GỬI KHÁCH TIỀM NĂNG:
+   • Khi bấm "🚀 Bán tour ngay" trên thẻ tour:
+     - Form "Gửi khách hàng tiềm năng" tự động mở ra.
+     - Ô "🎯 Chọn Tour bạn muốn bán" và ô "Nhu cầu du lịch sinh thái" được điền sẵn tên tour.
+     - CTV chỉ cần nhập Tên khách, SĐT và Số lượng khách dự kiến.
+     - Bấm "Gửi thông tin", khách được chuyển ngay sang Sale tiếp nhận với chuông báo và chấm đỏ.
+
+================================================================================
+PHẦN 11: QUẢN LÝ MẠNG LƯỚI CTV DÀNH CHO SALE, HỒ SƠ 360°, CỔNG HƯỚNG DẪN 2 CHIỀU & RÀ SOÁT CHẤM DỨT LIÊN KẾT
+================================================================================
+Hệ thống HAHA OPERATING SYSTEM V1.0 nâng cấp toàn diện Phân hệ 3 thành Trung Tâm Quản Lý 
+Mạng Lưới CTV & Huấn Luyện Nghiệp Vụ Bán Tour dành cho Bộ phận Kinh doanh (Sales) và CEO:
+
+1. MÔ HÌNH PHÂN CÔNG QUẢN LÝ CTV THEO TỪNG CHUYÊN VIÊN SALE:
+   • Mỗi nhân sự Sale chịu trách nhiệm đồng hành và quản lý trực tiếp khoảng 100 đối tác CTV:
+     - Sale Nguyễn Văn An (Sale Leader): Quản lý nhóm CTV chuyên tour trekking, sinh thái (Hoàng Yến, Thảo Vy, Tuấn Hưng...).
+     - Sale Trần Thị Ngọc: Quản lý nhóm CTV chuyên camping, dã ngoại gia đình (Minh Tuấn, Thu Thảo...).
+   • Bộ lọc Sale phụ trách: Dropdown "Sale phụ trách" cho phép nhân viên Sale lọc nhanh danh bạ
+     CTV mình quản lý; CEO có thể xem toàn bộ hoặc lọc theo bất kỳ nhân viên nào.
+   • Thẻ định danh CTV hiển thị rõ: Tên, SĐT, Avatar, Mã CTV, Mã Ref tiếp thị và Sale trực tiếp phụ trách.
+
+2. HỒ SƠ TOÀN DIỆN 360° CỦA ĐỐI TÁC CTV (NÚT "🔍 SOI 360°"):
+   • Bấm vào tên CTV hoặc nút "🔍 Soi 360°" trên bảng danh bạ để mở cửa sổ chi tiết toàn diện:
+     - 4 Thẻ KPI sức khỏe: Tổng khách đã gửi, Tổng doanh số mang về, Hoa hồng tích lũy và Lần tương tác gần nhất.
+     - Khối 1 (Định danh & Tài khoản): Số điện thoại, Username, Mã giới thiệu Ref, STK Ngân hàng, Sale phụ trách kèm SĐT Hotline.
+     - Khối 2 (Tour CTV chọn bán): Danh sách các tour CTV đã bấm chọn từ Kho tour để phân phối (kèm giá bán & hoa hồng).
+     - Khối 3 (Danh sách khách hàng): Toàn bộ khách hàng do CTV gửi về, mã hồ sơ, nhu cầu tour, trạng thái pipeline CRM và giá trị tour.
+     - Khối 4 (Lịch sử trao đổi 2 chiều): Dòng thời gian các câu hỏi, yêu cầu tư vấn và câu trả lời hướng dẫn giữa Sale và CTV.
+     - Nút hành động nhanh: "💬 Hướng dẫn nghiệp vụ", "⛔ Chấm dứt liên kết CTV" hoặc "🔄 Khôi phục liên kết".
+
+3. CỔNG TRAO ĐỔI & HƯỚNG DẪN NGHIỆP VỤ 2 CHIỀU (CTV <-> SALE):
+   • Phía Cổng CTV (Phân hệ 10 - Tab 5: "💬 Trao Đổi & Yêu Cầu Sale Hướng Dẫn"):
+     - Thẻ thông tin Sale phụ trách: Hiển thị tên chuyên viên Sale kèm Hotline/Zalo hỗ trợ trực tiếp.
+     - Form gửi yêu cầu: CTV chọn chủ đề (Khách khó, Xin giá riêng, Hướng dẫn kịch bản...), chọn khách hàng liên quan và nhập câu hỏi.
+     - Khi bấm gửi, hệ thống tự động bắn chuông thông báo tới Sale phụ trách và tạo bản ghi ở trạng thái "🟡 Chờ Sale hướng dẫn".
+     - Khi Sale phản hồi, Tab 5 xuất hiện chấm đỏ "Chưa đọc" và chuông thông báo giúp CTV nắm bắt ngay phương án tư vấn.
+   • Phía Bộ phận Sale (Phân hệ 3 - Tab 2: "💬 Tiếp Nhận & Hướng Dẫn CTV"):
+     - Bảng tiếp nhận các yêu cầu hướng dẫn từ CTV phụ trách kèm bộ lọc "Tất cả", "Chờ hướng dẫn", "Đã phản hồi".
+     - Badge số lượng thông báo nhấp nháy trên thanh Sub-tab khi có câu hỏi mới.
+     - Nút "✍️ Hướng dẫn ngay": Mở modal gõ phản hồi giải quyết tình huống (gợi ý phương án giá, chính sách quà tặng, mẹo chốt khách).
+     - Bấm "Gửi hướng dẫn", hệ thống cập nhật trạng thái "🟢 Đã hướng dẫn" và gửi phản hồi thẳng về Cổng của CTV.
+
+4. HỆ THỐNG XẾP HẠNG HIỆU SUẤT CTV TỰ ĐỘNG (5 PHÂN KHÚC KHOA HỌC):
+   • Hệ thống tự động phân loại sức khỏe hợp tác của CTV dựa trên dữ liệu thực tế:
+     - 🌟 Xuất sắc (EXCELLENT): Doanh số mang về >= 50 triệu đ hoặc gửi >= 3 khách hàng chốt thành công.
+     - 🟢 Hoạt động tốt (GOOD): Có phát sinh khách hàng và chốt được tour thành công.
+     - 🟡 Hoạt động ít (LOW): Mới tham gia hoặc mới gửi 1 khách hàng đang tư vấn.
+     - 🔴 Không hoạt động (DORMANT): Không phát sinh khách hàng hoặc tương tác > 60 ngày (Bất động).
+     - ⛔ Đã chấm dứt (TERMINATED): Đã thanh lọc và chấm dứt hợp đồng hợp tác.
+   • Bộ lọc hiệu suất: Cho phép Sale lọc tức thì danh sách CTV theo 5 phân khúc trên chỉ với 1 click chuột.
+
+5. QUY TRÌNH THANH LỌC MẠNG LƯỚI & CHẤM DỨT LIÊN KẾT CTV BẤT ĐỘNG:
+   • Tab 3: "⚠️ Rà Soát CTV Bất Động & Chấm Dứt":
+     - Hệ thống tự động quét và đưa vào danh sách cảnh báo những CTV im lặng > 60 ngày hoặc không hoạt động.
+     - Cột "Thời gian im lặng" hiển thị số ngày không tương tác (ví dụ: 77 ngày, 91 ngày...).
+   • Nút "⛔ Chấm dứt liên kết":
+     - Mở Modal xác nhận chấm dứt liên kết với dropdown lý do (Không hoạt động > 60 ngày, Không phản hồi Sale, Bán phá giá...).
+     - Nhập ghi chú giải trình thẩm định.
+     - Bấm "Xác nhận chấm dứt": Hệ thống tự động chuyển CTV sang trạng thái "⛔ Đã chấm dứt", khóa tài khoản đăng nhập,
+       thu hồi quyền tiếp thị và ghi vết đầy đủ vào Nhật ký hệ thống (Audit Log).
+   • Nút "🔄 Khôi phục liên kết":
+     - Cho phép mở khóa tài khoản và khôi phục trạng thái hoạt động nếu đối tác có nhu cầu quay trở lại hợp tác.
+
+================================================================================
+PHẦN 12: HẠCH TOÁN HOA HỒNG DOANH SỐ SALE, KPI ĐỘI NGŨ & CƠ CHẾ THƯỞNG VƯỢT KPI BẬC THANG
+================================================================================
+Hệ thống HAHA OPERATING SYSTEM V1.0 nâng cấp toàn diện cơ chế liên kết CTV - Sale, 
+bổ sung Sub-tab "🎯 4. KPI Đội Sale & Hoa Hồng Doanh Số CTV" và hệ thống hạch toán 
+hoa hồng minh bạch, chuẩn xác đến từng đơn tour:
+
+1. QUY TẮC RÀNG BUỘC ĐỘC QUYỀN 1 SALE (SINGLE-SALE ATTRIBUTION):
+   • Mở rộng quy mô: Chuyên viên Sale có thể quản lý số lượng lớn đối tác (>100 CTV,
+     linh hoạt 150, 200, 500+ CTV) mà không bị giới hạn cứng.
+   • Ràng buộc duy nhất: Mỗi đối tác CTV chỉ gắn với DUY NHẤT 1 chuyên viên Sale. 
+     Mọi đơn tour thành công phát sinh từ link tiếp thị hay mã giới thiệu của CTV 
+     sẽ tự động hạch toán doanh số và hoa hồng quản lý cho đúng Sale phụ trách đó, 
+     triệt tiêu 100% rủi ro tranh chấp hoa hồng hay phân bổ trùng lặp.
+   • Điều chuyển Sale quản lý CTV (Re-assignment):
+     - Tại bảng danh bạ hoặc Hồ sơ 360° của CTV, bấm nút "🔄 Điều chuyển Sale".
+     - Chọn Chuyên viên Sale mới tiếp nhận và nhập lý do điều chuyển.
+     - Hệ thống tự động chuyển giao toàn bộ CTV, giữ nguyên toàn vẹn lịch sử đơn hàng,
+       đồng thời gửi thông báo cập nhật về phía Cổng thông tin của CTV.
+
+2. CƠ CẤU DOANH SỐ & TIẾN ĐỘ KPI THÁNG:
+   • Tổng doanh số Sale ghi nhận = Doanh số từ Mạng lưới CTV + Doanh số tự bán trực tiếp:
+     - Doanh số CTV (CTV-driven Revenue): Tổng giá trị các đơn tour thành công do mạng
+       lưới CTV thuộc quyền quản lý mang về.
+     - Doanh số trực tiếp (Direct Sales): Tổng giá trị các đơn tour do chính Sale tư vấn,
+       chốt khách trực tiếp mà không qua CTV.
+   • Tiến độ KPI cá nhân & Đội Sale:
+     - Hệ thống đối chiếu Doanh số thực đạt với Chỉ tiêu KPI tháng (Target KPI).
+     - Hiển thị trực quan qua Thanh tiến độ (Progress Bar) và Tỷ lệ hoàn thành (% KPI).
+     - 4 Phân loại trạng thái KPI:
+       + 🚀 Bứt phá xuất sắc (>= 120% KPI).
+       + 🎯 Đã vượt KPI (100% - 119.9% KPI).
+       + 📈 Tiến độ khả quan (70% - 99.9% KPI).
+       + ⏳ Cần tăng tốc (< 70% KPI).
+
+3. CƠ CHẾ HOA HỒNG DOANH SỐ & THƯỞNG VƯỢT KPI BẬC THANG DÀNH CHO SALE:
+   • Hoa hồng quản lý CTV: 2.0% trên tổng doanh số mà các CTV thuộc quyền quản lý mang về.
+   • Hoa hồng bán trực tiếp: 3.0% trên doanh số tour do Sale tự chốt.
+   • Thưởng vượt KPI bậc thang (Tiered Over-KPI Incentive):
+     - Mốc 1: Đạt từ 100% đến dưới 120% KPI -> Thưởng thêm 1.5% trên phần doanh số vượt mốc target.
+     - Mốc 2: Đạt từ 120% KPI trở lên -> Thưởng thêm 2.5% trên TOÀN BỘ phần doanh số vượt mốc target.
+   • Công thức tổng thu nhập hoa hồng Sale:
+     Tổng hoa hồng = (Doanh số CTV x 2.0%) + (Doanh số trực tiếp x 3.0%) + Thưởng vượt KPI.
+
+4. BẢNG ĐIỀU KHIỂN MINH BẠCH DÀNH CHO SALE & CEO (SUB-TAB 4):
+   • Banner vinh danh & Hero KPI: Tóm tắt tiến độ, số tiền vượt chỉ tiêu và tỷ lệ hoàn thành.
+   • 4 Thẻ thu nhập hoa hồng thời gian thực:
+     - Thẻ 1: Hoa hồng Quản lý CTV (2.0%).
+     - Thẻ 2: Hoa hồng Bán trực tiếp (3.0%).
+     - Thẻ 3: Thưởng vượt KPI bậc thang (1.5% - 2.5%).
+     - Thẻ 4: Tổng hoa hồng thực nhận tháng này.
+   • Bảng xếp hạng đóng góp theo từng CTV:
+     - Liệt kê toàn bộ CTV thuộc quyền quản lý của Sale.
+     - Thống kê chi tiết: Số khách gửi, Doanh số mang về, Tỷ trọng đóng góp (%) và Hoa hồng quản lý.
+   • Bảng đối soát từng đơn tour hạch toán cho Sale:
+     - Minh bạch từng mã đơn tour (DH-xxx), ngày đặt, nguồn doanh số (CTV hay Bán trực tiếp),
+       giá trị đơn tour, tỷ lệ % và số tiền hoa hồng Sale được nhận.
+   • Bảng xếp hạng KPI toàn đội Sale (Team KPI Leaderboard):
+     - Vinh danh thứ bậc Top 1, Top 2... trong toàn bộ đội ngũ kinh doanh.
+     - So sánh Doanh số, Chỉ tiêu Target, Tỷ lệ % hoàn thành và Tổng hoa hồng từng nhân sự.
+
+5. PHÂN QUYỀN TRUY CẬP (RBAC):
+   • Chuyên viên Sale (Role SALE): Khi đăng nhập, màn hình tự động khóa cố định vào tài khoản
+     của Sale đó để bảo mật thu nhập cá nhân; Sale chỉ thấy mạng lưới CTV, đơn tour và hoa hồng của mình.
+   • Ban Giám Đốc (Role CEO): Có toàn quyền xem bảng tổng hợp toàn đội, chọn bất kỳ nhân sự Sale nào
+     để kiểm tra hiệu suất và đối soát chi trả hoa hồng cuối tháng.
+
+================================================================================
+Chúc toàn thể Đội ngũ Kinh doanh HaHa Eco Travel bứt phá mọi chỉ tiêu KPI và gặt hái thu nhập vượt bậc!
+================================================================================
+
+================================================================================
+PHẦN 13: QUẢN TRỊ ĐỐI TÁC CUNG ỨNG ĐA TỈNH THÀNH, BỘ LỌC ĐA CHIỀU (GIÁ & SAO), HỒ SƠ 360°, CỔNG HỢP TÁC TRỰC TUYẾN & CẬP NHẬT THỜI GIAN THỰC HẰNG NGÀY
+================================================================================
+
+1. HỆ SINH THÁI ĐỐI TÁC CUNG ỨNG ĐA TỈNH THÀNH & ĐA LOẠI HÌNH (PHÂN HỆ 5 - ĐIỀU HÀNH):
+   • Phân bố địa lý toàn quốc: Phủ rộng khắp các trọng điểm du lịch trải nghiệm: Đồng Nai 
+     (Vườn Quốc Gia Cát Tiên), TP.HCM, Lâm Đồng (Đà Lạt), Bến Tre (Mekong Delta), Ninh Bình 
+     (Tràng An - Tam Cốc), Đà Nẵng (Bà Nà - Sơn Trà), Lào Cai (Sa Pa - Fansipan), Kiên Giang (Phú Quốc)...
+   • Đa dạng phân loại dịch vụ du lịch:
+     - Khách sạn / Resort sinh thái (HOTEL): Bungalow, Lodge, Khách sạn 3-5 sao.
+     - Vận tải du lịch (TRANSPORT): Đội xe Limousine 9-19 chỗ, Universe 45 chỗ đời mới.
+     - Hướng dẫn viên bản địa (GUIDE): HDV chuyên tuyến rừng, sinh thái, văn hóa, song ngữ.
+     - Nhà hàng ẩm thực địa phương (RESTAURANT): Ẩm thực sông nước, núi rừng, Set Menu B2B.
+     - Vé tham quan & Trải nghiệm (TICKET): Vé cáp treo, vé cổng di sản, thuyền tham quan.
+     - Trekking / Hoạt động trải nghiệm (TREKKING): Porter dẫn rừng, thiết bị cắm trại glamping.
+
+2. BỘ LỌC ĐA CHIỀU THỜI GIAN THỰC (MULTI-DIMENSIONAL LIVE FILTER):
+   • Bộ lọc tức thì (Real-time Filtering) đặt ngay đầu Tab Nhà Cung Ứng trong Phân hệ Điều hành:
+     - Bộ lọc 1 - Tỉnh thành: Lọc theo tỉnh/thành phố chỉ định hoặc "Tất cả tỉnh thành".
+     - Bộ lọc 2 - Loại hình dịch vụ: Khách sạn, Xe du lịch, HDV, Nhà hàng, Vé tham quan, Trekking.
+     - Bộ lọc 3 - Xếp hạng sao: Lọc chính xác 5 sao, 4 sao, 3 sao hoặc "Tất cả số sao".
+     - Bộ lọc 4 - Khoảng giá dịch vụ: Dưới 500K, 500K - 1.5 Triệu, 1.5 - 3 Triệu, Trên 3 Triệu VNĐ.
+     - Bộ lọc 5 - Từ khóa tìm kiếm: Tìm kiếm theo tên đối tác, số điện thoại, người liên hệ, địa chỉ.
+   • Chế độ hiển thị linh hoạt (Dual View Modes):
+     - Chế độ Card Grid (Dạng Thẻ Đồ Họa): Trực quan, hiển thị sao vàng, khoảng giá B2B, số dịch vụ, 
+       chấm trạng thái vận hành thời gian thực (Live Status Pulse) và bản tin mới nhất.
+     - Chế độ Table (Dạng Bảng Danh Mục): Tối ưu cho việc tra cứu nhanh, rà soát mã đối tác, công nợ.
+
+3. HỒ SƠ ĐỐI TÁC 360° (360-DEGREE PARTNER DOSSIER):
+   Nhấp vào bất kỳ đối tác nào để mở Modal Hồ sơ 360° với 4 Sub-tab chi tiết:
+   • Tab 1 - Tổng quan & Liên hệ: Tên thương mại, địa chỉ, người đại diện, số hotline, email, 
+     hạn mức công nợ và điều khoản thanh toán ký kết.
+   • Tab 2 - Bảng giá dịch vụ chi tiết (B2B Rates):
+     - Liệt kê toàn bộ các gói dịch vụ cơ sở cung cấp (Hạng phòng, loại xe, thực đơn, ca dẫn...).
+     - So sánh song song: Giá niêm yết (Rack Rate) vs Giá ưu đãi đại lý (B2B Agent Rate).
+     - Biên độ chiết khấu và trạng thái khả dụng phòng/xe hiện tại.
+   • Tab 3 - 5 Chính sách vận hành chi tiết:
+     - Chính sách 1: Công nợ & Hạn mức thanh toán (Gối đầu 15-30 ngày, đối soát định kỳ).
+     - Chính sách 2: Hoàn, hủy & Phạt vi phạm (Khung giờ hủy miễn phí, phạt mùa cao điểm).
+     - Chính sách 3: Trẻ em & Phụ thu (Miễn phí theo độ tuổi, giá vé/bữa ăn trẻ em).
+     - Chính sách 4: Phòng & Suất ăn nội bộ FOC (Chính sách ưu đãi miễn phí cho Hướng dẫn viên và Tài xế).
+     - Chính sách 5: Quy định nhận / trả dịch vụ (Giờ Check-in/Check-out, phụ thu quá giờ).
+   • Tab 4 - Bản tin cập nhật thời gian thực (Live Operational Updates):
+     - Tình trạng tải phục vụ trong ngày: Bình thường (Xanh), Sắp đầy (Vàng), Đã kín chỗ/Dừng nhận (Đỏ).
+     - Ghi chú công suất trống (Số phòng trống, số ghế xe sẵn sàng).
+     - Thông báo trực tiếp từ cơ sở (Thời tiết, lưu ý đường sá, thực đơn mới, ưu đãi nóng).
+
+4. CỔNG ĐĂNG NHẬP & ONBOARDING DÀNH CHO ĐỐI TÁC CUNG ỨNG:
+   • Đăng nhập chuyên biệt: Tại màn hình Login, nhấp nút "🏨 Đăng nhập Cổng Đối Tác" để truy cập 
+     với vai trò Đối tác Cung ứng (Role SUPPLIER).
+   • Form Đăng Ký Hợp Tác Trực Tuyến (Online Supplier Onboarding):
+     - Dành cho các đơn vị Khách sạn, Xe, Nhà hàng, Điểm tham quan muốn gia nhập mạng lưới HaHa Travel.
+     - Bấm nút "🤝 Đăng Ký Hợp Tác Dành Cho Đối Tác Mới" trên màn hình đăng nhập.
+     - Nhập thông tin doanh nghiệp, tỉnh thành, loại hình dịch vụ, số sao, báo giá dịch vụ ban đầu, 
+       chính sách hủy phòng và ưu đãi FOC nội bộ cho đoàn.
+     - Sau khi nộp form, hệ thống tự động sinh Mã Nhà Cung Ứng (NCC-xxx), lưu vào cơ sở dữ liệu và 
+       cấp quyền đăng nhập ngay lập tức.
+
+5. CỔNG QUẢN TRỊ ĐỐI TÁC CUNG ỨNG (PHÂN HỆ 11 - PARTNER PORTAL):
+   Khi đăng nhập bằng tài khoản Đối tác Cung ứng, giao diện tự động cô lập chuyên nghiệp:
+   • Sub-tab 1 - Hồ sơ cơ sở & Chính sách: Đối tác tự cập nhật thông tin giới thiệu, địa chỉ, hotline, 
+     chính sách hủy hoãn và chính sách đón tiếp đoàn HaHa Travel.
+   • Sub-tab 2 - Danh mục dịch vụ B2B: 
+     - Quản lý danh mục phòng nghỉ, xe, thực đơn phục vụ đối tác HaHa Travel.
+     - Thêm mới dịch vụ với Giá niêm yết (Rack Rate) và Giá ưu đãi cam kết cho HaHa Travel (B2B Rate).
+     - Bật/Tắt trạng thái khả dụng chỉ bằng 1 cú nhấp chuột.
+   • Sub-tab 3 - Cập nhật tình trạng thời gian thực hằng ngày (Daily Live Operational Bulletin):
+     - Đối tác chọn Trạng thái tải: "Đang hoạt động tốt", "Sắp đầy chỗ", hoặc "Tạm ngừng nhận khách".
+     - Nhập số lượng phòng trống/xe trống hiện tại.
+     - Đăng Bản tin hằng ngày (Daily Notice) thông báo tình hình thời tiết, tình trạng giao thông, 
+       menu đặc sản trong ngày.
+     - Khi bấm "Phát Bản Tin Thời Gian Thực", hệ thống tự động:
+       + Cập nhật bảng tin và thẻ đối tác tại Phân hệ Điều hành (Module 5).
+       + Kích hoạt chuông thông báo (Live Alert Notification) gửi trực tiếp tới Bộ phận Điều hành (OPS) 
+         và Ban Giám Đốc (CEO).
+   • Sub-tab 4 - Lệnh đặt tour & Tiếp nhận đoàn:
+     - Tiếp nhận các Lệnh dịch vụ do Bộ phận Điều hành của HaHa Travel điều động (DH-xxx).
+     - Xem ngày đến, ngày đi, số lượng khách, tổng tiền dịch vụ và điều khoản thanh toán.
+     - Nút "Xác nhận nhận đoàn" xác thực 2 chiều giữa Cơ sở cung cấp và HaHa Travel.
+
+6. ĐỒNG BỘ DỮ LIỆU & BẢO MẬT PHÂN QUYỀN (RBAC):
+   • Bảo mật phân quyền: Tài khoản SUPPLIER chỉ được truy cập Phân hệ 11 và các chức năng của mình; 
+     tuyệt đối không can thiệp vào dữ liệu tài chính, khách hàng CRM, hoa hồng Sale/CTV hay đơn tour nội bộ.
+   • Đồng bộ xuyên suốt: Mọi cập nhật về giá B2B hay tình trạng phòng trống từ Phân hệ 11 được phản ánh tức 
+     thì sang Phân hệ Điều hành (Module 5), giúp đội ngũ Điều hành luôn có dữ liệu chính xác nhất để lập tour, 
+     chốt giá và bảo đảm trải nghiệm khách hàng tối ưu.
+
+================================================================================
+Kính chúc Quý Đối tác và HaHa Eco Travel luôn đồng hành gắn kết, hợp tác thịnh vượng và phát triển bền vững!
+================================================================================
+
+
+================================================================================
+7. HỆ THỐNG CỔNG ĐĂNG NHẬP PHÂN TÁCH CHUYÊN BIỆT THEO PHÂN QUYỀN
+================================================================================
+Nhằm đảm bảo tính bảo mật và trải nghiệm trực quan cho từng bộ phận, hệ thống HaHa Eco Travel đã triển khai mô hình Phân Tách Cổng Đăng Nhập Chuyên Biệt (Segregated Role Login Gateway):
+
+1. MÀN HÌNH ĐIỀU HƯỚNG CỔNG (PORTAL GATEWAY):
+   - Khi truy cập trang chủ chung (index.html) mà không có tham số, người dùng sẽ thấy Màn hình Gateway với 3 cổng làm việc lớn:
+     + 🏢 Cổng Cán Bộ & Nhân Viên Nội Bộ (Ban Giám Đốc, Sales, Điều Hành, Kế Toán)
+     + 🌱 Cổng Đối Tác Cộng Tác Viên (Mạng lưới CTV kinh doanh & hoa hồng)
+     + 🏨 Cổng Đối Tác Cung Ứng B2B (Extranet dành cho Khách sạn, Nhà xe, Dịch vụ)
+   - Người dùng click vào cổng của bộ phận mình -> Giao diện của các bộ phận khác được ẩn hoàn toàn!
+
+2. CÁC ĐƯỜNG DẪN TRỰC TIẾP CHUYÊN BIỆT (DIRECT DEDICATED URLS):
+   Mỗi bộ phận có thể lưu bookmark đường dẫn riêng để vào thẳng giao diện của mình:
+   - Cổng Đối Tác Extranet: index.html?portal=supplier (hoặc index.html#portal-supplier)
+   - Cổng Cộng Tác Viên: index.html?portal=ctv (hoặc index.html#portal-ctv)
+   - Cổng Cán Bộ Nhân Viên: index.html?portal=staff (hoặc index.html#portal-staff)
+   - Lọc trực tiếp theo phòng ban nội bộ:
+     + Ban Giám Đốc (CEO): index.html?portal=ceo
+     + Phòng Kinh Doanh (Sales): index.html?portal=sale
+     + Phòng Điều Hành Tour (OPS): index.html?portal=ops
+     + Phòng Kế Toán - Tài Chính: index.html?portal=ketoan
+
+3. TÍNH NĂNG TRONG TỪNG CỔNG PHÂN HỆ:
+   - Cổng Nhân Viên Nội Bộ: Có bộ lọc 5 phòng ban (Tất cả, Giám đốc, Sales, Điều hành, Kế toán). Khi chọn phòng ban nào, tiêu đề, ô nhập tài khoản và thẻ đăng nhập nhanh chỉ hiển thị đúng phòng ban đó.
+   - Nút "🔗 Link Cổng": Hỗ trợ quản trị viên sao chép đường link chuyên biệt gửi riêng cho CTV, Đối tác hoặc Nhân viên chỉ bằng 1 cú click.
+   - Nút "← Đổi Cổng": Cho phép quay lại màn hình Gateway điều hướng khi cần đổi cổng phân hệ.
+
+4. BẢO MẬT RANH GIỚI PHÂN QUYỀN (CROSS-PORTAL ACCESS CONTROL):
+   - CTV không thể đăng nhập tại Cổng Nhân Viên hoặc Cổng Đối Tác: Hệ thống cảnh báo rõ ràng và tự động chuyển về Cổng CTV.
+   - Đối tác Cung ứng không thể đăng nhập tại Cổng Nhân Viên hoặc Cổng CTV: Hệ thống cảnh báo và tự động chuyển về Cổng Đối Tác.
+   - Cán bộ nhân viên không thể đăng nhập tại Cổng CTV hoặc Cổng Đối Tác: Hệ thống cảnh báo và tự động chuyển về Cổng Nội Bộ.
+================================================================================
+
+
+================================================================================
+8. HỆ THỐNG KẾ TOÁN & THUẾ LỮ HÀNH CHUẨN PHÁP LUẬT VIỆT NAM (DIRECT TAX AUTHORITY COMPLIANCE)
+================================================================================
+Hệ thống Kế toán - Tài chính của HaHa Eco Travel được chuẩn hóa toàn diện theo các chuẩn mực
+quản trị lữ hành quốc tế (Amadeus, Sabre, Tourplan) và tuân thủ nghiêm ngặt hệ thống pháp luật
+Việt Nam hiện hành, làm việc trực tiếp và tương thích dữ liệu với Cơ quan Thuế (Cổng thuedientu.gdt.gov.vn).
+
+1. CĂN CỨ PHÁP LÝ & CƠ CHẾ TÍNH THUẾ ĐẶC THÙ NGÀNH DU LỊCH:
+   • Thuế GTGT Lữ hành (Điều 7 Khoản 16 Thông tư 219/2013/TT-BTC):
+     - Đối với dịch vụ du lịch lữ hành theo hình thức trọn gói thu tiền từ khách hàng, giá tính 
+       thuế GTGT được xác định là:
+       GIÁ TÍNH THUẾ = DOANH THU TRỌN GÓI THU TỪ KHÁCH (-) CHI PHÍ DỊCH VỤ MUA NGOÀI HỢP LÝ
+     - Các chi phí mua ngoài được khấu trừ trực tiếp bao gồm: Tiền phòng khách sạn, vé máy bay,
+       tàu xe vận chuyển, ăn uống nhà hàng, vé tham quan, bảo hiểm du lịch...
+     - Thuế suất 10% tính trên phần chênh lệch lữ hành. Quy định này bảo vệ doanh nghiệp không bị
+       đánh thuế trùng trên tổng doanh thu thu hộ cho các cơ sở lưu trú và vận tải.
+   • Hóa đơn điện tử có mã của Cơ quan Thuế (Nghị định 123/2020/NĐ-CP & Thông tư 78/2021/TT-BTC):
+     - Ký hiệu hóa đơn chuẩn 6 ký tự: 1C26TAA (1: HĐ GTGT, C: Có mã CQT, 26: Năm 2026, T: Doanh nghiệp, AA: Ký hiệu riêng).
+     - Số hóa đơn gồm 8 chữ số tự tăng (từ 00000001).
+     - Mã xác thực Cơ quan Thuế (Mã CQT): Chuỗi 34 ký tự chuẩn định dạng CQT.
+     - Ký số điện tử chuẩn Token CA / HSM (Viettel-CA / VNPT-CA / FPT-CA).
+     - Xuất dữ liệu hóa đơn định dạng XML chuẩn trao đổi với Cổng tiếp nhận Tổng cục Thuế.
+   • Khấu trừ Thuế TNCN mạng lưới CTV (Điểm i Khoản 1 Điều 25 Thông tư 111/2013/TT-BTC):
+     - Đối với các khoản chi trả tiền hoa hồng, môi giới cho cá nhân không ký HĐLĐ hoặc ký HĐLĐ
+       dưới 3 tháng có tổng mức trả thu nhập từ 2.000.000 đồng/lần trở lên thì phải khấu trừ thuế
+       TNCN theo tỷ lệ 10% trên thu nhập trước khi chi trả cho cá nhân.
+     - Dưới 2.000.000 đồng: Chi trả 100% (Thuế TNCN = 0 đồng).
+     - Doanh nghiệp có trách nhiệm cấp Chứng từ khấu trừ thuế TNCN điện tử Mẫu 03/TNCN theo 
+       Nghị định 123 cho CTV khi thực hiện chi trả.
+   • Sổ sách kế toán & Tờ khai thuế (Thông tư 200/2014/TT-BTC & Thông tư 80/2021/TT-BTC):
+     - Tờ khai thuế GTGT Mẫu 01/GTGT tổng hợp tự động các chỉ tiêu: [21] Doanh thu không chịu thuế,
+       [22] Thuế GTGT đầu vào được khấu trừ từ hóa đơn NCC, [29] Chi phí mua ngoài giảm trừ du lịch,
+       [32] Doanh thu tính thuế GTGT chênh lệch lữ hành, [40] Thuế GTGT phải nộp vào ngân sách.
+     - Xuất file XML Tờ khai thuế GTGT chuẩn để nộp trực tuyến qua Cổng thuedientu.gdt.gov.vn.
+     - Sổ hạch toán kép (Double-Entry General Ledger) tuân thủ Hệ thống Tài khoản Thông tư 200:
+       + TK 111: Tiền mặt tại quỹ
+       + TK 112: Tiền gửi ngân hàng
+       + TK 131: Phải thu của khách hàng (A/R)
+       + TK 331: Phải trả cho người bán / Nhà cung cấp (A/P)
+       + TK 511: Doanh thu cung cấp dịch vụ du lịch
+       + TK 632: Giá vốn dịch vụ du lịch (Chi phí mua ngoài)
+       + TK 33311: Thuế GTGT đầu ra phải nộp
+       + TK 3335: Thuế TNCN khấu trừ phải nộp
+       + TK 641: Chi phí hoa hồng bán hàng cho CTV
+
+2. HƯỚNG DẪN VẬN HÀNH 5 SUB-TABS PHÂN HỆ 6 (TÀI CHÍNH, KẾ TOÁN & THUẾ):
+   • Sub-tab 1 - Tổng quan & Báo cáo dòng tiền (fin-tab-overview):
+     - 6 Cards chỉ số tài chính thời gian thực: Dòng tiền thực thu (Cash In), Dòng tiền thực chi
+       (Cash Out), Dòng tiền ròng (Net Cash), Doanh thu ký kết, Phải trả NCC, Nghĩa vụ hoa hồng CTV.
+     - 2 Cards chỉ số Thuế GTGT (TT 219) & Thuế TNCN (TT 111) tự động tính toán.
+     - Bảng phân tích tuổi nợ khách hàng (A/R Aging): Hiện hành (Trong hạn), 1-30 ngày, 31-60 ngày, >60 ngày.
+     - Bảng phân tích tuổi nợ NCC (A/P Aging): Đúng hạn, Sắp đến hạn (<=7 ngày), Quá hạn thanh toán.
+     - Sổ quỹ trực quan: Tiền mặt (TK 111) và Tiền gửi ngân hàng (TK 112).
+   • Sub-tab 2 - Hóa đơn điện tử du lịch GTGT (fin-tab-invoices):
+     - Xem danh sách hóa đơn điện tử phát hành kèm số HĐ 8 chữ số, ký hiệu 1C26TAA, mã CQT 34 ký tự.
+     - Nút "➕ Lập HĐĐT Du lịch (TT 219)": Mở modal lập HĐĐT, chọn đơn tour, tự động điền thông tin khách
+       hàng, tự động tính trừ chi phí dịch vụ mua ngoài và tiền thuế GTGT 10% chuẩn TT 219.
+     - Nút "👁️ Bản thể hiện": Xem hóa đơn chuẩn Bộ Tài Chính có chữ ký số điện tử Viettel-CA và mã QR.
+     - Nút "📥 Tải XML": Tải file XML hóa đơn chuẩn dữ liệu Cơ quan Thuế.
+     - Nút "✉️ Gửi Email": Tự động gửi đường link hóa đơn điện tử cho khách hàng.
+     - Nút "⚠️ Báo sai sót": Lập thông báo sai sót hóa đơn điện tử theo Mẫu 04/SS-HĐĐT.
+   • Sub-tab 3 - Thuế TNCN & Chứng từ khấu trừ CTV (fin-tab-pit):
+     - Bảng kê các khoản hoa hồng chi trả cho mạng lưới CTV, tách bạch: Hoa hồng Gross, Thuế TNCN 10%,
+       Số tiền thực nhận (Net).
+     - Nút "➕ Cấp Chứng từ Thuế TNCN (Mẫu 03/TNCN)": Mở modal chọn phiếu hoa hồng đã thanh toán,
+       tự động tính 10% thuế khấu trừ, cấp chứng từ điện tử có mã CQT.
+     - Nút "👁️ Bản thể hiện Chứng từ": Xem chứng từ điện tử chuẩn Nghị định 123.
+     - Nút "📥 Tải XML Chứng từ": Xuất file dữ liệu XML lưu trữ hoặc gửi CTV phục vụ quyết toán thuế cuối năm.
+     - Nút "📊 Bảng kê quyết toán 05/KK-TNCN": Tự động kết xuất báo cáo quyết toán thuế TNCN năm.
+   • Sub-tab 4 - Tờ khai thuế 01/GTGT & Sổ kế toán kép (fin-tab-ledger):
+     - Tờ khai thuế GTGT Mẫu 01/GTGT tổng hợp tự động các chỉ tiêu pháp lý [21], [22], [29], [32], [40].
+     - Nút "📥 Xuất XML nộp CQT": Tải file XML tờ khai nộp trực tiếp qua Cổng Thuế điện tử.
+     - Nút "📑 Xuất Bảng kê bán ra": Xuất bảng kê hóa đơn bán ra chi tiết.
+     - Sổ nhật ký chung kép (Double-Entry Ledger): Theo dõi mọi nghiệp vụ thu, chi, xuất HĐ, khấu trừ thuế.
+     - Bộ lọc tài khoản kế toán: Tất cả, TK 111, TK 112, TK 131, TK 331, TK 511, TK 632, TK 3331, TK 3335, TK 641.
+   • Sub-tab 5 - Phê duyệt lệnh đặt dịch vụ & Công nợ NCC (fin-tab-supplier-orders):
+     - Quản trị toàn bộ lệnh đặt dịch vụ NCC (LDC-xxx) do Bộ phận Điều hành chuyển sang.
+     - Tách bạch: Thanh toán ngay (UNC ngân hàng) và Ghi nhận công nợ (A/P).
+     - Cột kiểm soát "Hóa đơn điện tử đầu vào NCC": Đảm bảo 100% chi phí có hóa đơn hợp lệ trước khi quyết toán.
+
+3. KẾT NỐI LIÊN BỘ PHẬN XUYÊN SUỐT:
+   • Ban Giám Đốc (Module 1 - CEO Cockpit):
+     - Bổ sung Radar Giám sát Nghĩa vụ Thuế & An toàn Pháp lý Doanh nghiệp:
+       + Thuế GTGT lữ hành dự kiến phải nộp (Chỉ tiêu [40]).
+       + Thuế TNCN CTV đã trích nộp ngân sách.
+       + Tiến độ xuất HĐĐT có mã CQT (Đã cấp / Tổng số đơn).
+       + Tỷ lệ hóa đơn đầu vào NCC đầy đủ (Bảo vệ chi phí thuế TNDN).
+   • Phòng Kinh Doanh (Module 4 - Đơn tour / Booking):
+     - Nút "🧾 HĐĐT": Phát hành hóa đơn điện tử GTGT du lịch trực tiếp từ từng booking chốt thành công.
+   • Cổng Cộng Tác Viên (Module 10 - CTV Portal):
+     - Bảng hoa hồng hiển thị minh bạch 3 cột: Hoa hồng Gross, Thuế TNCN khấu trừ 10%, Thực nhận (Net).
+     - Nút "📥 Chứng từ thuế": Cho phép CTV tự xem và tải Chứng từ khấu trừ thuế TNCN điện tử Mẫu 03/TNCN.
+   • Cổng Đối Tác Cung Ứng (Module 11 - Supplier Extranet):
+     - Theo dõi công nợ dịch vụ và trạng thái cung cấp hóa đơn GTGT đầu vào cho HaHa Travel.
+
+Hệ thống đảm bảo tính nhất quán dữ liệu, an toàn pháp lý tuyệt đối và sẵn sàng cho các kỳ thanh kiểm tra thuế!
+================================================================================
+
+================================================================================
+PHẦN 9: TRIỂN KHAI VERCEL & CẤU HÌNH ĐỒNG BỘ THỜI GIAN THỰC (REAL-TIME CLOUD SYNC)
+================================================================================
+
+1. TRIỂN KHAI PHẦN MỀM LÊN VERCEL (HOÀN TOÀN MIỄN PHÍ TRỌN ĐỜI):
+   - Bước 1: Mở trình duyệt truy cập: https://vercel.com
+   - Bước 2: Chọn "Sign Up" hoặc "Log In" bằng tài khoản Google hoặc GitHub.
+   - Bước 3: Tại màn hình Vercel Dashboard, bấm nút "Add New..." -> chọn "Project".
+   - Bước 4: Tải lên mã nguồn:
+     + Cách A (Kéo thả): Giải nén tệp HAHA_TRAVEL_WEB_DEPLOY.zip (hoặc thư mục HAHA_OPERATING_SYSTEM_V1.0) và tải lên.
+     + Cách B (Qua GitHub): Đẩy dự án lên GitHub và bấm "Import" repository đó vào Vercel.
+   - Bước 5: Tại mục "Framework Preset", để mặc định là "Other" (tĩnh). Bấm nút "Deploy".
+   - Bước 6: Chờ 15 - 30 giây, Vercel sẽ tự động cấp một tên miền bảo mật SSL vĩnh viễn, ví dụ:
+     https://haha-travel.vercel.app
+   - Bước 7 (Tùy chọn - Gắn tên miền riêng công ty):
+     + Vào mục "Settings" của dự án trên Vercel -> chọn "Domains".
+     + Nhập tên miền riêng của công ty, ví dụ: crm.hahatravel.com.
+     + Cấu hình bản ghi CNAME theo hướng dẫn của Vercel. SSL sẽ được cấp tự động 100% miễn phí.
+
+2. CẤU HÌNH ĐỒNG BỘ THỜI GIAN THỰC (REAL-TIME CLOUD SYNC QUA GOOGLE FIREBASE):
+   Khi nhân viên ra ngoài đường chốt đơn bằng điện thoại (5G) và Kế toán / Giám đốc ngồi văn phòng trên máy tính (Wi-Fi), dữ liệu sẽ được tự động đồng bộ thời gian thực trong 0.1 giây mà không cần bấm F5.
+
+   Các bước thiết lập Google Firebase Realtime Database (Miễn phí 100% trọn đời của Google):
+   - Bước 1: Truy cập trang quản trị Google Firebase: https://console.firebase.google.com/
+   - Bước 2: Bấm "Add Project" (hoặc "Tạo dự án"), đặt tên dự án là "haha-travel", bấm tiếp tục cho đến khi hoàn thành.
+   - Bước 3: Ở menu bên trái, vào mục "Build" -> chọn "Realtime Database" -> Bấm "Create Database".
+   - Bước 4: Chọn vị trí máy chủ (nên chọn "Singapore - asia-southeast1" để tốc độ mạng tại Việt Nam nhanh nhất).
+   - Bước 5: Tại bước Security Rules, chọn "Start in test mode" (chế độ kiểm thử) để cho phép đọc/ghi dữ liệu -> Bấm "Enable".
+   - Bước 6: Sao chép đường dẫn Database URL được cấp ở đầu trang, định dạng có dạng:
+     https://haha-travel-default-rtdb.asia-southeast1.firebasedatabase.app
+   - Bước 7: Kích hoạt trong phần mềm HaHa Travel:
+     + Đăng nhập vào phần mềm (trên máy tính hoặc điện thoại).
+     + Nhấn vào nút "Cloud Sync" ở thanh tiêu đề (hoặc vào mục Sao lưu & Phục hồi cơ sở dữ liệu).
+     + Dán đường link Firebase Database URL vào ô "Firebase Realtime Database URL".
+     + Tích chọn "Bật Đồng Bộ Đám Mây Tự Động" -> Bấm "Lưu cấu hình".
+     + Bấm "Đẩy lên Cloud" để đưa dữ liệu hiện tại của doanh nghiệp lên đám mây.
+
+3. TRẢI NGHIỆM ĐỒNG BỘ THỜI GIAN THỰC GIỮA CÁC THIẾT BỊ:
+   - Khi Sale chốt 1 đơn tour hoặc thêm 1 khách hàng mới trên điện thoại qua 5G -> Lập tức màn hình Kế toán & CEO trên máy tính tại văn phòng tự động cập nhật ngay tức thì kèm thông báo: "Đã đồng bộ dữ liệu thời gian thực từ đám mây!".
+   - Khi Kế toán duyệt chi tiền nhà cung cấp hoặc xuất hóa đơn điện tử CQT -> Điện thoại của Điều hành và Sale cũng nhìn thấy trạng thái thanh toán ngay lập tức.
+   - Nếu di chuyển vào khu vực mất sóng hoặc không có mạng: Hệ thống tự động chuyển sang chế độ Cục bộ (Local Cache). Khi có lại kết nối 5G/Wi-Fi, hệ thống sẽ tự động đồng bộ bù ngay lập tức!
+================================================================================

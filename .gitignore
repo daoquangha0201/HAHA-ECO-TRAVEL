@@ -1,0 +1,23 @@
+# Backup and temporary files
+*.bak
+*.mod4_wip.bak
+*.v2.bak
+*.pre_ctv_tour_v1.bak
+backups/
+
+# Operating System temporary files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Local editor and workspace files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test outputs and logs
+*_out.txt
+*.log

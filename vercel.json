@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "name": "haha-operating-system",
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/sw.js",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate"
+      },
+      "dest": "/sw.js"
+    },
+    {
+      "src": "/manifest.json",
+      "headers": {
+        "cache-control": "no-cache"
+      },
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
