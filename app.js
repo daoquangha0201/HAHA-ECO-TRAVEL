@@ -17011,10 +17011,6 @@ function loadCloudSyncConfig() {
     cloudSyncConfig.enabled = true;
   }
 }
-  } catch (e) {
-    console.error("[CloudSync] Error loading cloud sync config:", e);
-  }
-}
 
 let cloudEventSource = null;
 let cloudSyncDebounceTimer = null;
@@ -17027,6 +17023,28 @@ function initCloudSync() {
     connectCloudRealtimeStream();
     pullFromCloud(true);
   }
+  window.addEventListener('online', () => {
+    updateCloudSyncUi();
+    if (cloudSyncConfig.enabled) pullFromCloud(true);
+  });
+  window.addEventListener('offline', () => {
+    cloudSyncConfig.status = 'offline';
+    updateCloudSyncUi();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && cloudSyncConfig.enabled) {
+      pullFromCloud(true);
+    }
+  });
+  window.addEventListener('focus', () => {
+    if (cloudSyncConfig.enabled) pullFromCloud(true);
+  });
+  setInterval(() => {
+    if (cloudSyncConfig.enabled && !isRemoteUpdating) {
+      pullFromCloud(true);
+    }
+  }, 10000);
+}
   window.addEventListener('online', () => {
     updateCloudSyncUi();
     if (cloudSyncConfig.enabled) pullFromCloud(true);
