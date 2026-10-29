@@ -3,104 +3,85 @@ chcp 65001 >nul
 title HaHa Eco Travel - Đẩy Mã Nguồn Lên GitHub
 
 echo ===================================================================
-echo     🌍 HAHA ECO TRAVEL - TỰ ĐỘNG ĐẨY DỰ ÁN LÊN GITHUB
+echo     🌍 HAHA ECO TRAVEL - ĐẨY DỰ ÁN LÊN GITHUB REPOSITORY
+echo     Repo: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
 echo ===================================================================
 echo.
 
 cd /d "%~dp0"
 
-:: 1. Kiểm tra Git
+:: 1. Xác định đường dẫn Git
+set "GIT_CMD=git"
 where git >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [!] HỆ THỐNG CHƯA CÀI ĐẶT GIT CLI.
-    echo.
-    echo Bạn có 3 cách rất dễ dàng để đưa mã nguồn lên GitHub:
-    echo.
-    echo  [CÁCH 1 - KHUYÊN DÙNG KHÔNG CẦN CÀI ĐẶT]:
-    echo   1. Mở trình duyệt vào: https://github.com/new
-    echo   2. Đặt tên repository: haha-operating-system (chọn Public hoặc Private)
-    echo   3. Bấm 'Create repository'
-    echo   4. Bấm vào liên kết 'uploading an existing file'
-    echo   5. Kéo toàn bộ các file trong thư mục này thả vào trình duyệt và bấm 'Commit changes'!
-    echo.
-    echo  [CÁCH 2 - DÙNG GITHUB DESKTOP (Giao diện đồ họa)]:
-    echo   1. Tải và cài đặt từ: https://desktop.github.com/
-    echo   2. Mở GitHub Desktop -> Chọn 'Add Existing Repository' -> Chọn thư mục này -> Bấm 'Publish repository'.
-    echo.
-    echo  [CÁCH 3 - CÀI ĐẶT GIT ĐỂ CHẠY FILE NÀY]:
-    echo   Bạn có muốn mở trang tải Git for Windows ngay bây giờ không? (Y/N)
-    set /p open_git="Nhập lựa chọn: "
-    if /i "%open_git%"=="Y" (
-        start https://git-scm.com/download/win
+    if exist "%LOCALAPPDATA%\Programs\Git\cmd\git.exe" (
+        set "GIT_CMD=%LOCALAPPDATA%\Programs\Git\cmd\git.exe"
+    ) else if exist "C:\Program Files\Git\cmd\git.exe" (
+        set "GIT_CMD=C:\Program Files\Git\cmd\git.exe"
+    ) else (
+        echo [!] Không tìm thấy Git. Vui lòng tải Git tại: https://git-scm.com/download/win
+        pause
+        exit /b 1
     )
-    echo.
-    pause
-    exit /b
 )
 
-echo [+] Đã tìm thấy Git trên máy tính của bạn!
+echo [+] Sử dụng Git: "%GIT_CMD%"
+"%GIT_CMD%" --version
 echo.
 
-:: 2. Khởi tạo Git nếu chưa có
+:: 2. Khởi tạo Git & Nhánh main
 if not exist ".git" (
-    echo [*] Đang khởi tạo kho lưu trữ Git cục bộ...
-    git init
-) else (
-    echo [*] Đã có cấu hình Git cục bộ.
+    echo [*] Khởi tạo kho lưu trữ Git cục bộ...
+    "%GIT_CMD%" init
 )
+"%GIT_CMD%" branch -M main
 
-:: 3. Chuyển nhánh chính thành main
-git branch -M main
+:: 3. Cấu hình danh tính tác giả
+"%GIT_CMD%" config user.name "daquangha0201"
+"%GIT_CMD%" config user.email "daquangha0201@users.noreply.github.com"
 
-:: 4. Thêm file theo .gitignore
-echo [*] Đang chuẩn bị các tệp mã nguồn sạch (đã loại bỏ file rác & backup theo .gitignore)...
-git add .
+:: 4. Thêm file và commit
+echo [*] Kiểm tra và đóng gói các tệp mã nguồn sạch...
+"%GIT_CMD%" add .
+"%GIT_CMD%" commit -m "feat: HaHa Eco Travel ERP/CRM v1.0 Enterprise Release" >nul 2>&1
 
-:: 5. Commit
-echo [*] Đang đóng gói bản phát hành...
-git commit -m "feat: HaHa Eco Travel ERP/CRM v1.0 Enterprise Release"
+:: 5. Cấu hình Remote Origin
+echo [*] Cấu hình liên kết tới https://github.com/daquangha0201/HAHA-ECO-TRAVEL.git
+"%GIT_CMD%" remote remove origin >nul 2>&1
+"%GIT_CMD%" remote add origin https://github.com/daquangha0201/HAHA-ECO-TRAVEL.git
 
 echo.
 echo ===================================================================
-echo [*] BƯỚC LIÊN KẾT VỚI REPOSITORY TRÊN GITHUB:
+echo [*] ĐANG TIẾN HÀNH ĐẨY MÃ NGUỒN (PUSH) LÊN GITHUB...
 echo ===================================================================
 echo.
-echo 1. Hãy tạo 1 Repository mới trên https://github.com/new (nếu chưa tạo).
-echo 2. Copy đường link Repository đó (Dạng: https://github.com/USERNAME/REPO_NAME.git)
+echo Lưu ý: Nếu trình duyệt hoặc cửa sổ GitHub hiện lên hỏi đăng nhập,
+echo bạn chỉ cần chọn "Sign in with your browser" và bấm xác nhận Authorize.
 echo.
-set /p repo_url="Dán đường link GitHub của bạn vào đây (hoặc nhấn Enter để bỏ qua): "
 
-if "%repo_url%"=="" (
-    echo.
-    echo [i] Bạn chưa nhập link GitHub. Các tệp đã được commit sẵn sàng trong máy.
-    echo Khi nào có link, bạn chỉ cần gõ lệnh:
-    echo   git remote add origin [LINK_CỦA_BẠN]
-    echo   git push -u origin main
-    echo.
-    pause
-    exit /b
-)
-
-:: 6. Thêm remote origin
-git remote remove origin >nul 2>&1
-git remote add origin %repo_url%
-
-echo.
-echo [*] Đang đẩy toàn bộ mã nguồn lên GitHub...
-git push -u origin main
+"%GIT_CMD%" push -u origin main
 
 if %errorlevel% equ 0 (
     echo.
     echo ===================================================================
-    echo [OK] CHÚC MỪNG! DỰ ÁN ĐÃ ĐƯỢC ĐƯA LÊN GITHUB THÀNH CÔNG!
+    echo [OK] THÀNH CÔNG RỰC RỠ! MÃ NGUỒN ĐÃ ĐƯỢC ĐẨY LÊN GITHUB!
+    echo Truy cập xem ngay: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
     echo ===================================================================
-    echo Bây giờ bạn có thể liên kết Repository này với Vercel để tự động Deploy web!
-    echo.
 ) else (
     echo.
-    echo [!] Quá trình push chưa hoàn tất. Có thể bạn cần đăng nhập tài khoản GitHub
-    echo     trên cửa sổ bật lên, hoặc kiểm tra lại quyền truy cập repository.
+    echo ===================================================================
+    echo [!] NẾU GẶP LỖI XÁC THỰC HOẶC REPOSITORY ĐÃ CÓ FILE TRƯỚC ĐÓ:
     echo.
+    echo 1. Nếu kho trên GitHub đã có sẵn README hoặc LICENSE, chạy lệnh gộp:
+    echo    "%GIT_CMD%" pull origin main --allow-unrelated-histories
+    echo    "%GIT_CMD%" push -u origin main
+    echo.
+    echo 2. HOẶC CÁCH ĐƠN GIẢN NHẤT TRÊN WEB (30 GIÂY):
+    echo    - Vào: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
+    echo    - Bấm "Add file" -> "Upload files"
+    echo    - Kéo toàn bộ file trong thư mục này thả vào và bấm "Commit changes"!
+    echo ===================================================================
 )
 
+echo.
 pause
