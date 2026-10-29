@@ -5052,17 +5052,25 @@
   </div>
 
   <!-- MODAL: SAO LƯU & PHỤC HỒI CƠ SỞ DỮ LIỆU JSON -->
-  <div id="backup-restore-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto border border-slate-200">
-      <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+  <!-- MODAL: SAO LƯU & PHỤC HỒI CƠ SỞ DỮ LIỆU & CLOUD SYNC -->
+  <div id="backup-restore-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4" style="touch-action: pan-y;">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col border border-slate-200 overflow-hidden my-auto" onclick="event.stopPropagation()">
+      
+      <!-- HEADER CỐ ĐỊNH (STICKY HEADER - LUÔN THẤY TIÊU ĐỀ & NÚT ĐÓNG) -->
+      <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between flex-shrink-0 bg-white z-10">
         <div>
-          <h3 class="text-base font-bold text-slate-900">Sao lưu & Phục hồi Cơ sở dữ liệu</h3>
-          <p class="text-xs text-slate-500">Đảm bảo an toàn dữ liệu, chống mất mát thông tin doanh nghiệp</p>
+          <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+            <span>☁️</span>
+            <span>Đồng Bộ Cloud &amp; Quản Trị Dữ Liệu</span>
+          </h3>
+          <p class="text-xs text-slate-500">Đồng bộ đa thiết bị thời gian thực &amp; Sao lưu an toàn</p>
         </div>
-        <button onclick="closeBackupRestoreModal()" class="text-slate-400 hover:text-slate-600">✕</button>
+        <button onclick="closeBackupRestoreModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold transition-all">✕</button>
       </div>
 
-      <div class="p-6 space-y-5">
+      <!-- NỘI DUNG CUỘN CỰC MƯỢT (SCROLLABLE BODY CHO CẢ MOBILE & DESKTOP) -->
+      <div class="p-5 sm:p-6 space-y-5 overflow-y-auto flex-1 overscroll-contain" style="-webkit-overflow-scrolling: touch; touch-action: pan-y;">
+        
         <!-- PHẦN: ĐỒNG BỘ ĐÁM MÂY THỜI GIAN THỰC (GOOGLE FIREBASE REALTIME) -->
         <div class="p-4 bg-sky-50 rounded-xl border border-sky-200 space-y-3">
           <div class="flex items-center justify-between">
@@ -5124,7 +5132,8 @@
             </div>
           </div>
         </div>
-        <!-- Phần 1: Xuất file sao lưu -->
+
+        <!-- PHẦN 1: XUẤT FILE SAO LƯU -->
         <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 space-y-2">
           <div class="flex items-center space-x-2">
             <span class="text-lg">📥</span>
@@ -5133,12 +5142,13 @@
           <p class="text-[11px] text-emerald-800">
             Tải về toàn bộ cơ sở dữ liệu hiện tại (Khách hàng, CTV, Tour, Đơn hàng, Thanh toán, Hoa hồng, Audit Log) dưới định dạng tệp JSON kèm mã kiểm tra toàn vẹn.
           </p>
-          <button onclick="exportDatabaseBackup()" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow transition-all">
-            💾 Tải tệp sao lưu JSON về máy tính
+          <button onclick="exportDatabaseBackup()" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow transition-all flex items-center justify-center space-x-2">
+            <span>💾</span>
+            <span>Tải tệp sao lưu JSON về máy tính</span>
           </button>
         </div>
 
-        <!-- Phần 2: Phục hồi cơ sở dữ liệu -->
+        <!-- PHẦN 2: PHỤC HỒI CƠ SỞ DỮ LIỆU -->
         <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 space-y-2">
           <div class="flex items-center space-x-2">
             <span class="text-lg">📤</span>
@@ -5148,25 +5158,28 @@
             Chọn tệp sao lưu JSON đã lưu để khôi phục. Hệ thống sẽ tự động kiểm tra tính toàn vẹn cấu trúc trước khi ghi nhận.
           </p>
           <input type="file" id="restore-file-input" accept=".json" class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-amber-200 file:text-amber-900 hover:file:bg-amber-300">
-          <button onclick="importDatabaseRestore()" class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow transition-all">
-            🔄 Khôi phục dữ liệu từ tệp đã chọn
+          <button onclick="importDatabaseRestore()" class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow transition-all flex items-center justify-center space-x-2">
+            <span>🔄</span>
+            <span>Khôi phục dữ liệu từ tệp đã chọn</span>
           </button>
         </div>
 
-        <!-- Phần 3: Chạy bộ kiểm thử tự động -->
+        <!-- PHẦN 3: BỘ KIỂM THỬ TỰ ĐỘNG -->
         <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
           <div class="flex items-center space-x-2">
             <span class="text-lg">🧪</span>
             <span class="text-xs font-bold text-slate-800 uppercase">3. Bộ Kiểm Thử Tự Động Toàn Diện</span>
           </div>
           <p class="text-[11px] text-slate-500">
-            Chạy tự động 20 nhóm kiểm thử: RBAC, Chống trùng lặp, Tính hoa hồng 3 phương pháp, Đối soát, Dòng tiền, Pax/Tiền tệ lớn, Đồng bộ Đơn tour 720M, Luồng Chốt tour → Báo giá → Đơn tour → Thanh toán, Cô lập Hoa hồng Đa đơn tour, Ràng buộc Toàn vẹn Dữ liệu, Chu trình Lệnh đặt dịch vụ Điều hành → Kế toán duyệt chi/công nợ (Bảo vệ bất biến) và Hệ thống Thông Báo & Chuyển Giao Liên Phòng Ban (Sale chốt tour chuyển Điều hành trong phần Mới tiếp nhận).
+            Chạy tự động 20 nhóm kiểm thử: RBAC, Chống trùng lặp, Tính hoa hồng, Đối soát, Dòng tiền, Đơn tour 720M, Báo cáo Thuế và Chu trình chuyển giao liên phòng ban.
           </p>
-          <button onclick="runSystemTestSuite()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl shadow transition-all">
-            🚀 Khởi chạy Bộ Kiểm Thử Tự Động
+          <button onclick="runSystemTestSuite()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl shadow transition-all flex items-center justify-center space-x-2">
+            <span>▶️</span>
+            <span>Khởi chạy Bộ Kiểm Thử Tự Động</span>
           </button>
           <div id="test-suite-results" class="hidden mt-2 p-3 bg-white rounded-lg border text-xs max-h-48 overflow-y-auto font-mono text-slate-700"></div>
         </div>
+
       </div>
     </div>
   </div>

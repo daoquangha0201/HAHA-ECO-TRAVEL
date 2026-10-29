@@ -522,3 +522,30 @@ tbody tr:hover {
 .quote-badge-confirmed { background-color: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
 .quote-badge-converted { background-color: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
 .quote-badge-rejected { background-color: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+
+/* 11. MODAL & CONTAINER TOUCH SCROLL ENHANCEMENTS */
+.overscroll-contain {
+  overscroll-behavior: contain;
+}
+.touch-pan-y {
+  touch-action: pan-y;
+}
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
