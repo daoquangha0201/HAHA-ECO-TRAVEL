@@ -2,8 +2,12 @@
 chcp 65001 >nul
 title HaHa Eco Travel - Đẩy Mã Nguồn Lên GitHub
 
+:: Cấu hình biến môi trường PATH để Git Credential Manager hoạt động bình thường
+set "PATH=%LOCALAPPDATA%\Programs\Git\cmd;%LOCALAPPDATA%\Programs\Git\ucrt64\bin;%LOCALAPPDATA%\Programs\Git\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;%PATH%"
+
 echo ===================================================================
 echo     🌍 HAHA ECO TRAVEL - ĐẨY DỰ ÁN LÊN GITHUB REPOSITORY
+echo     Tài khoản: daquangha0201
 echo     Repo: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
 echo ===================================================================
 echo.
@@ -19,7 +23,7 @@ if %errorlevel% neq 0 (
     ) else if exist "C:\Program Files\Git\cmd\git.exe" (
         set "GIT_CMD=C:\Program Files\Git\cmd\git.exe"
     ) else (
-        echo [!] Không tìm thấy Git. Vui lòng tải Git tại: https://git-scm.com/download/win
+        echo [!] Không tìm thấy Git.
         pause
         exit /b 1
     )
@@ -36,14 +40,15 @@ if not exist ".git" (
 )
 "%GIT_CMD%" branch -M main
 
-:: 3. Cấu hình danh tính tác giả
+:: 3. Cấu hình danh tính và Credential Manager
 "%GIT_CMD%" config user.name "daquangha0201"
 "%GIT_CMD%" config user.email "daquangha0201@users.noreply.github.com"
+"%GIT_CMD%" config credential.helper manager
 
-:: 4. Thêm file và commit
+:: 4. Thêm file và commit bản mới nhất
 echo [*] Kiểm tra và đóng gói các tệp mã nguồn sạch...
 "%GIT_CMD%" add .
-"%GIT_CMD%" commit -m "feat: HaHa Eco Travel ERP/CRM v1.0 Enterprise Release" >nul 2>&1
+"%GIT_CMD%" commit -m "feat: HaHa Eco Travel ERP v1.0 - Full UI, Real-time Cloud Sync & Giám Đốc 1-touch" >nul 2>&1
 
 :: 5. Cấu hình Remote Origin
 echo [*] Cấu hình liên kết tới https://github.com/daquangha0201/HAHA-ECO-TRAVEL.git
@@ -55,9 +60,6 @@ echo ===================================================================
 echo [*] ĐANG TIẾN HÀNH ĐẨY MÃ NGUỒN (PUSH) LÊN GITHUB...
 echo ===================================================================
 echo.
-echo Lưu ý: Nếu trình duyệt hoặc cửa sổ GitHub hiện lên hỏi đăng nhập,
-echo bạn chỉ cần chọn "Sign in with your browser" và bấm xác nhận Authorize.
-echo.
 
 "%GIT_CMD%" push -u origin main
 
@@ -65,22 +67,18 @@ if %errorlevel% equ 0 (
     echo.
     echo ===================================================================
     echo [OK] THÀNH CÔNG RỰC RỠ! MÃ NGUỒN ĐÃ ĐƯỢC ĐẨY LÊN GITHUB!
-    echo Truy cập xem ngay: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
+    echo Vercel sẽ tự động build lại trang web trong 15 giây.
+    echo Xem kho tại: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
     echo ===================================================================
 ) else (
     echo.
     echo ===================================================================
-    echo [!] NẾU GẶP LỖI XÁC THỰC HOẶC REPOSITORY ĐÃ CÓ FILE TRƯỚC ĐÓ:
+    echo [!] KHO 'HAHA-ECO-TRAVEL' CHƯA ĐƯỢC TẠO TRÊN TÀI KHOẢN GITHUB CỦA BẠN!
     echo.
-    echo 1. Nếu kho trên GitHub đã có sẵn README hoặc LICENSE, chạy lệnh gộp:
-    echo    "%GIT_CMD%" pull origin main --allow-unrelated-histories
-    echo    "%GIT_CMD%" push -u origin main
-    echo.
-    echo 2. HOẶC CÁCH ĐƠN GIẢN NHẤT TRÊN WEB (30 GIÂY):
-    echo    - Vào: https://github.com/daquangha0201/HAHA-ECO-TRAVEL
-    echo    - Bấm "Add file" -> "Upload files"
-    echo    - Kéo toàn bộ file trong thư mục này thả vào và bấm "Commit changes"!
+    echo Hệ thống sẽ tự động mở trang tạo kho trên trình duyệt cho bạn...
+    echo (Chỉ cần bấm nút xanh 'Create repository' là xong!)
     echo ===================================================================
+    start https://github.com/new?name=HAHA-ECO-TRAVEL
 )
 
 echo.
