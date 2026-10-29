@@ -16984,9 +16984,10 @@ window.calculateCtvPit = calculateCtvPit;
 // Tự động đồng bộ thời gian thực đa thiết bị: Máy tính & Điện thoại (5G/Wi-Fi)
 // ==============================================================
 const CLOUD_SYNC_KEY = 'haha_cloud_sync_config';
+const DEFAULT_FIREBASE_URL = 'https://haha-travel-cloud-default-rtdb.asia-southeast1.firebasedatabase.app';
 let cloudSyncConfig = {
-  enabled: false,
-  url: '',
+  enabled: true,
+  url: DEFAULT_FIREBASE_URL,
   lastSynced: null,
   status: 'offline' // 'connected', 'syncing', 'offline', 'error'
 };
@@ -16996,9 +16997,22 @@ function loadCloudSyncConfig() {
     const saved = localStorage.getItem(CLOUD_SYNC_KEY);
     if (saved) {
       cloudSyncConfig = Object.assign(cloudSyncConfig, JSON.parse(saved));
+      if (!cloudSyncConfig.url) {
+        cloudSyncConfig.url = DEFAULT_FIREBASE_URL;
+        cloudSyncConfig.enabled = true;
+      }
+    } else {
+      cloudSyncConfig.url = DEFAULT_FIREBASE_URL;
+      cloudSyncConfig.enabled = true;
     }
   } catch (e) {
-    console.error("Lỗi đọc cấu hình cloud sync:", e);
+    console.error("[CloudSync] Error loading cloud sync config:", e);
+    cloudSyncConfig.url = DEFAULT_FIREBASE_URL;
+    cloudSyncConfig.enabled = true;
+  }
+}
+  } catch (e) {
+    console.error("[CloudSync] Error loading cloud sync config:", e);
   }
 }
 
@@ -17138,8 +17152,12 @@ async function pullFromCloud(silent = false) {
         if (!silent) {
           alert("✅ Đã lấy dữ liệu mới nhất từ Đám mây thành công!");
         }
-      } else if (!silent) {
-        alert("ℹ️ Đám mây chưa có dữ liệu. Hãy bấm 'Đẩy Dữ Liệu Lên Cloud' trước!");
+      } else {
+        // T? d?ng d?y co s? d? li?u kh?i t?o ln Dm my n?u trn Cloud dang tr?ng
+        console.log('[CloudSync] Dm my dang tr?ng, t? d?ng d?y d? li?u kh?i t?o...');
+        pushToCloud(true);
+        cloudSyncConfig.status = 'connected';
+        updateCloudSyncUi();
       }
     } else {
       cloudSyncConfig.status = 'error';
