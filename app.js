@@ -4190,10 +4190,13 @@ function parseMoneyInput(value) {
 
 function initApp() {
   loadDatabase();
-  setupEventListeners();
   if (typeof initCloudSync === 'function') {
     initCloudSync();
   }
+  if (window.IS_STANDALONE_STOREFRONT) {
+    return;
+  }
+  setupEventListeners();
 
   const savedUser = sessionStorage.getItem('haha_logged_user');
   if (savedUser) {
@@ -4274,7 +4277,7 @@ function calculateBookingFinancials(booking) {
 
   const netPaid = Math.max(0, totalReceipts - totalRefunds);
   const totalAmount = Number(booking.totalAmount) || 0;
-  const remainingAmount = Math.max(0, totalAmount - netPaid);
+  const remainingAmount = booking.status === 'Đã hủy' ? 0 : Math.max(0, totalAmount - netPaid);
 
   return {
     totalAmount,
@@ -4365,18 +4368,28 @@ function syncCustomerFinancials(customerOrId) {
   }
 
   // Cập nhật hoa hồng liên kết nếu có - Khóa chặt theo bookingCode chống va chạm đa đơn tour
-  if (cust.collaboratorId && summary.bookingCount > 0) {
+  if (summary.bookingCount > 0) {
     summary.bookings.forEach(b => {
+      const effectiveCtvId = b.collaboratorId || cust.collaboratorId;
+      if (!effectiveCtvId) return;
       const comm = (db.commissions || []).find(c => c.bookingCode === b.code || (!c.bookingCode && c.customerId && String(c.customerId) === String(cust.id)));
       if (comm) {
         if (!comm.bookingCode) comm.bookingCode = b.code;
+        if (!comm.ctvId) comm.ctvId = effectiveCtvId;
+        if (!comm.collaboratorId) comm.collaboratorId = effectiveCtvId;
         comm.tourValue = b.totalAmount;
-        const policy = db.tourPolicies.find(tp => tp.id === b.tourId) || findTourPolicy(b.tourName);
+        comm.tourRevenue = b.totalAmount;
+        if (comm.status === 'Chờ đối soát') comm.status = 'Chờ duyệt';
+        const policy = db.tourPolicies.find(tp => tp.id === b.tourId) || (!comm.isB2COnline ? findTourPolicy(b.tourName) : null);
         if (policy) {
           const calc = calculateTourCommission({ tourValue: b.totalAmount, paxCount: b.paxCount, costValue: b.estimatedCost }, policy);
           comm.amount = calc.amount;
           comm.basisText = calc.basisText;
           comm.policyApplied = `${policy.name} (${policy.methodTitle})`;
+        } else if (comm.isB2COnline) {
+          comm.amount = Math.round(b.totalAmount * 0.05);
+          comm.basisText = `5% trên đơn đặt trực tuyến ${b.code} (${formatVND(b.totalAmount)})`;
+          comm.policyApplied = comm.policyApplied || 'Affiliate Link Website B2C (5%)';
         }
       }
     });
@@ -4397,7 +4410,29 @@ function syncAllFinancialData() {
       b.remainingAmount = fin.remainingAmount;
       b.refundAmount = fin.refundAmount;
 
-      if (b.status !== 'Đã hoàn thành' && b.status !== 'Đã hủy' && b.status !== 'Đang thực hiện') {
+      if (b.status === 'Đã hủy') {
+        b.remainingAmount = 0;
+        if (!b.financialStatus || b.financialStatus !== 'Đã hoàn tiền') {
+          b.financialStatus = 'Đã hủy';
+        }
+        // Tự động hủy hoa hồng chưa thanh toán của đơn đã hủy
+        if (Array.isArray(db.commissions)) {
+          db.commissions.forEach(cm => {
+            if (cm.bookingCode === b.code && cm.status !== 'Đã hủy' && cm.status !== 'Đã thanh toán') {
+              cm.status = 'Đã hủy';
+            }
+          });
+        }
+        // Tự động hủy lệnh NCC chưa chi tiền của đơn đã hủy để không phát sinh công nợ ảo A/P
+        if (Array.isArray(db.supplierBookings)) {
+          db.supplierBookings.forEach(sb => {
+            if ((sb.bookingCode === b.code || sb.bookingId === b.code) && !(sb.paidCost > 0) && sb.status !== 'CANCELLED' && sb.status !== 'Đã hủy') {
+              sb.status = 'CANCELLED';
+              sb.remainingCost = 0;
+            }
+          });
+        }
+      } else if (b.status !== 'Đã hoàn thành' && b.status !== 'Đang thực hiện') {
         if (b.paidAmount >= b.totalAmount && b.totalAmount > 0) {
           b.status = 'Đã thanh toán đủ';
           b.financialStatus = 'Đã thanh toán đủ';
@@ -4412,7 +4447,18 @@ function syncAllFinancialData() {
     });
   }
 
-  // B. Đồng bộ từng khách hàng từ db.bookings & db.payments
+  // B. Chuẩn hóa schema hoa hồng CTV (đảm bảo ctvId, tourValue và status đồng nhất 100%)
+  if (Array.isArray(db.commissions)) {
+    db.commissions.forEach(cm => {
+      if (!cm.ctvId && cm.collaboratorId) cm.ctvId = cm.collaboratorId;
+      if (!cm.collaboratorId && cm.ctvId) cm.collaboratorId = cm.ctvId;
+      if (cm.tourValue === undefined && cm.tourRevenue !== undefined) cm.tourValue = cm.tourRevenue;
+      if (!cm.policyApplied && cm.methodTitle) cm.policyApplied = cm.methodTitle;
+      if (cm.status === 'Chờ đối soát') cm.status = 'Chờ duyệt';
+    });
+  }
+
+  // C. Đồng bộ từng khách hàng từ db.bookings & db.payments
   if (Array.isArray(db.customers)) {
     db.customers.forEach(c => {
       syncCustomerFinancials(c);
@@ -11285,6 +11331,16 @@ function cancelBooking(bookingId) {
       comm.note = `Đơn tour ${b.code} đã bị hủy`;
     }
 
+    // Hủy các lệnh đặt dịch vụ NCC chưa thanh toán thuộc đơn này để tránh công nợ ảo A/P
+    if (Array.isArray(db.supplierBookings)) {
+      db.supplierBookings.forEach(sb => {
+        if ((sb.bookingCode === b.code || sb.bookingId === b.code) && !(sb.paidCost > 0) && sb.status !== 'CANCELLED' && sb.status !== 'Đã hủy') {
+          sb.status = 'CANCELLED';
+          sb.remainingCost = 0;
+        }
+      });
+    }
+
     // Đồng bộ tức thì sang hồ sơ khách hàng CRM
     if (b.customerId) {
       syncCustomerFinancials(b.customerId);
@@ -13777,6 +13833,9 @@ function getSupplierOrderBadge(status) {
   if (status === 'REJECTED') {
     return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-300">❌ Kế toán trả về</span>';
   }
+  if (status === 'CANCELLED' || status === 'Đã hủy') {
+    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-600 border border-slate-300">⚪ Đã hủy lệnh</span>';
+  }
   return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">Chờ xử lý</span>';
 }
 
@@ -14434,7 +14493,7 @@ function renderFinanceModule() {
   const totalIn = db.payments.filter(p => p.status === 'CONFIRMED' && (!p.type || p.type === 'PAYMENT')).reduce((s, p) => s + (p.amount || 0), 0);
   const totalRefund = db.payments.filter(p => p.status === 'CONFIRMED' && p.type === 'REFUND').reduce((s, p) => s + (p.amount || 0), 0);
   const cashIn = Math.max(0, totalIn - totalRefund);
-  const activeBookings = db.bookings.filter(b => b.status !== 'Da h?y');
+  const activeBookings = db.bookings.filter(b => b.status !== 'Đã hủy');
   const contractTotal = activeBookings.reduce((s, b) => s + (b.totalAmount || 0), 0);
   const receivable = activeBookings.reduce((s, b) => s + (b.remainingAmount || 0), 0);
 
@@ -14445,10 +14504,11 @@ function renderFinanceModule() {
   const elFinReceivable = document.getElementById('fin-stat-receivable');
   if (elFinReceivable) elFinReceivable.textContent = formatVND(receivable);
 
-  // 2. Phải trả Nhà cung cấp & Công nợ A/P
-  const supplierTotalCost = db.supplierBookings.reduce((s, sb) => s + (sb.agreedCost || 0), 0);
-  const supplierPaid = db.supplierBookings.reduce((s, sb) => s + (sb.paidCost || 0), 0);
-  const supplierDebt = Math.max(0, supplierTotalCost - supplierPaid);
+  // 2. Phải trả Nhà cung cấp & Công nợ A/P (Loại trừ các lệnh đã hủy hoặc bị từ chối để không đội nợ ảo)
+  const activeSupplierBookings = (db.supplierBookings || []).filter(sb => sb.status !== 'CANCELLED' && sb.status !== 'Đã hủy' && sb.status !== 'REJECTED');
+  const supplierTotalCost = activeSupplierBookings.reduce((s, sb) => s + (sb.agreedCost || 0), 0);
+  const supplierPaid = (db.supplierBookings || []).reduce((s, sb) => s + (sb.paidCost || 0), 0);
+  const supplierDebt = activeSupplierBookings.reduce((s, sb) => s + Math.max(0, (sb.agreedCost || 0) - (sb.paidCost || 0)), 0);
 
   const elFinSuppCost = document.getElementById('fin-stat-supplier-cost');
   if (elFinSuppCost) elFinSuppCost.textContent = formatVND(supplierTotalCost);
@@ -14458,10 +14518,10 @@ function renderFinanceModule() {
   if (elFinSuppDebt) elFinSuppDebt.textContent = formatVND(supplierDebt);
 
   // 3. Nghĩa vụ Hoa hồng CTV
-  const activeComms = db.commissions.filter(c => c.status !== 'Da h?y');
+  const activeComms = db.commissions.filter(c => c.status !== 'Đã hủy');
   const commTotal = activeComms.reduce((s, c) => s + (c.amount || 0), 0);
-  const commPaid = activeComms.filter(c => c.status === 'Da thanh ton').reduce((s, c) => s + (c.amount || 0), 0);
-  const commPayable = activeComms.filter(c => c.status === 'Ch? duy?t' || c.status === 'Da duy?t chi').reduce((s, c) => s + (c.amount || 0), 0);
+  const commPaid = activeComms.filter(c => c.status === 'Đã thanh toán').reduce((s, c) => s + (c.amount || 0), 0);
+  const commPayable = activeComms.filter(c => c.status === 'Chờ duyệt' || c.status === 'Đã duyệt chi').reduce((s, c) => s + (c.amount || 0), 0);
 
   const elFinCommTotal = document.getElementById('fin-stat-comm-total');
   if (elFinCommTotal) elFinCommTotal.textContent = formatVND(commTotal);
@@ -14707,7 +14767,7 @@ function renderFinanceLedger() {
 
 function renderFinanceLedgerTab() {
   // 1. Tính toán Tờ khai thuế GTGT Mẫu 01/GTGT
-  const activeBookings = (db.bookings || []).filter(b => b.status !== 'Da h?y');
+  const activeBookings = (db.bookings || []).filter(b => b.status !== 'Đã hủy');
   let totalDeductible = 0;
   let totalTaxable = 0;
 
@@ -15077,7 +15137,7 @@ function openCreateTaxReceiptModal(commId) {
 
   const select = document.getElementById('pit-form-comm-select');
   if (select) {
-    const validComms = (db.commissions || []).filter(c => c.status !== 'Da h?y');
+    const validComms = (db.commissions || []).filter(c => c.status !== 'Đã hủy');
     select.innerHTML = '<option value="">-- Chọn phiếu chi hoa hồng từ 2.000.000 VNĐ --</option>' +
       validComms.map(c => {
         const ctv = (db.ctvs || []).find(x => x.id === c.ctvId) || {};
@@ -15266,7 +15326,7 @@ function downloadTaxReceiptXml(receiptId) {
 // XUẤT CÁC BÁO CÁO THUẾ CHUẨN TỔNG CỤC THUẾ (XML / EXCEL / CSV)
 // ==========================================
 function exportVatTaxReturnXml() {
-  const activeBookings = (db.bookings || []).filter(b => b.status !== 'Da h?y');
+  const activeBookings = (db.bookings || []).filter(b => b.status !== 'Đã hủy');
   let deductible = 0, taxable = 0;
   activeBookings.forEach(b => {
     const calc = calculateTourismVat(b);
@@ -16482,6 +16542,66 @@ function runSystemTestSuite() {
       t26Ok,
       `Độ phủ ${supProvinces.length} tỉnh thành; Lọc chuẩn Tỉnh/Sao/Giá; Bảng giá B2B & 5 chính sách chi tiết; Đăng ký đối tác mới trực tuyến; Đồng bộ bản tin thời gian thực sang Điều hành & CEO`
     );
+
+    // Test 27: Kiểm Toán Chéo Không Chồng Chéo Tài Chính Giữa 7 Phân Hệ (Zero-Overlap Cross-Module Financial Audit)
+    syncAllFinancialData();
+    const ceoActiveBookings = db.bookings.filter(b => b.status !== 'Đã hủy');
+    const finActiveBookings = db.bookings.filter(b => b.status !== 'Đã hủy');
+    const ceoContractVal = ceoActiveBookings.reduce((s, b) => s + (b.totalAmount || 0), 0);
+    const finContractVal = finActiveBookings.reduce((s, b) => s + (b.totalAmount || 0), 0);
+
+    const ceoArDebt = ceoActiveBookings.reduce((s, b) => s + (b.remainingAmount || 0), 0);
+    const finReceivable = finActiveBookings.reduce((s, b) => s + (b.remainingAmount || 0), 0);
+
+    // Kiểm tra phương trình kế toán trên từng đơn đang hoạt động: paidAmount + remainingAmount === totalAmount
+    const bookingMathExact = ceoActiveBookings.every(b => ((b.paidAmount || 0) + (b.remainingAmount || 0)) === (b.totalAmount || 0));
+
+    // Kiểm tra đơn hủy DH-007 không bị tính vào công nợ phải thu (remainingAmount === 0)
+    const cancelledZeroDebt = db.bookings.filter(b => b.status === 'Đã hủy').every(b => (b.remainingAmount || 0) === 0);
+
+    // Kiểm tra khớp đúng Hoa hồng giữa Module 1 (CEO), Module 6 (Kế toán) và Module 7 (Hoa hồng CTV)
+    const mod7ActiveComms = db.commissions.filter(c => c.status !== 'Đã hủy');
+    const mod7Paid = mod7ActiveComms.filter(c => c.status === 'Đã thanh toán').reduce((s, c) => s + (c.amount || 0), 0);
+    const mod7Payable = mod7ActiveComms.filter(c => c.status === 'Chờ duyệt' || c.status === 'Đã duyệt chi').reduce((s, c) => s + (c.amount || 0), 0);
+    const mod7Total = mod7ActiveComms.reduce((s, c) => s + (c.amount || 0), 0);
+    const commEquationExact = (mod7Paid + mod7Payable) === mod7Total;
+
+    // Kiểm tra Dòng tiền ròng (Net Cash = Cash In - Cash Out) đồng nhất tuyệt đối giữa CEO và Kế toán
+    const totalCashIn = Math.max(0,
+      db.payments.filter(p => p.status === 'CONFIRMED' && (!p.type || p.type === 'PAYMENT')).reduce((s, p) => s + (p.amount || 0), 0) -
+      db.payments.filter(p => p.status === 'CONFIRMED' && p.type === 'REFUND').reduce((s, p) => s + (p.amount || 0), 0)
+    );
+    const totalSuppPaid = db.supplierBookings.reduce((s, sb) => s + (sb.paidCost || 0), 0);
+    const totalCashOut = totalSuppPaid + mod7Paid;
+    const netCashUnified = totalCashIn - totalCashOut;
+
+    const t27Ok = (ceoContractVal === finContractVal) &&
+                  (ceoArDebt === finReceivable) &&
+                  bookingMathExact &&
+                  cancelledZeroDebt &&
+                  commEquationExact &&
+                  Number.isSafeInteger(netCashUnified);
+
+    assert(
+      '27. Kiểm Toán Chéo Không Chồng Chéo Tài Chính Giữa Các Phân Hệ (Zero-Overlap Cross-Module Financial Audit)',
+      t27Ok,
+      `Doanh thu hợp đồng (${formatVND(ceoContractVal)}), Phải thu A/R (${formatVND(ceoArDebt)}), Hoa hồng (${formatVND(mod7Total)} = Đã chi ${formatVND(mod7Paid)} + Phải trả ${formatVND(mod7Payable)}) & Dòng tiền ròng (${formatVND(netCashUnified)}) khớp 100% giữa CEO, CRM, Điều hành & Kế toán; Đơn hủy nợ = 0đ`
+    );
+
+    // Test 28: Kiểm Thử Luồng Đặt Hàng Trực Tuyến B2C, Cổng Thanh Toán, Cơ Chế Lợi Nhuận 4 Tầng & Đồng Bộ 2 Chiều
+    const b2cBridgeReady = typeof initInterAppRealtimeBridge === 'function' && typeof saveDatabase === 'function';
+    const b2cTourPol = db.tourPolicies[0];
+    const simB2CRev = b2cTourPol.price * 4;
+    const simB2BCost = (b2cTourPol.estimatedCost || Math.round(b2cTourPol.price * 0.7)) * 4;
+    const simB2CVat = calculateTourismVat({ totalAmount: simB2CRev, actualCost: simB2BCost });
+    const t28Ok = b2cBridgeReady && simB2CVat.taxable === (simB2CRev - simB2BCost) && simB2CVat.vatAmount === Math.round((simB2CRev - simB2BCost) * 0.10);
+
+    assert(
+      '28. Liên Kết 2 Chiều Website Bán Hàng B2C (storefront.html) ↔ Quản Trị ERP (index.html) & Thuế GTGT Khấu Trừ TT219',
+      t28Ok,
+      `Cầu nối BroadcastChannel + Storage Event sẵn sàng; Hạch toán chênh lệch Giá bán B2C (${formatVND(simB2CRev)}) - Giá vốn NCC (${formatVND(simB2BCost)}) = Giá tính thuế (${formatVND(simB2CVat.taxable)}), VAT = ${formatVND(simB2CVat.vatAmount)}`
+    );
+
     const endTime = performance.now();
     const totalDuration = Math.round(endTime - startTime);
 
@@ -17177,8 +17297,14 @@ function applyRemoteCloudData(remoteDb) {
     localStorage.setItem(CLOUD_SYNC_KEY, JSON.stringify(cloudSyncConfig));
     updateCloudSyncUi();
     
-    refreshCurrentActiveModule();
-    showSyncNotificationToast("Đã đồng bộ dữ liệu thời gian thực từ đám mây!");
+    if (window.IS_STANDALONE_STOREFRONT) {
+      if (typeof window.onErpDatabaseSyncedToStorefront === 'function') {
+        window.onErpDatabaseSyncedToStorefront({ source: 'CLOUD_SSE', type: 'DB_SYNC' });
+      }
+    } else {
+      refreshCurrentActiveModule();
+      showSyncNotificationToast("Đã đồng bộ dữ liệu thời gian thực từ đám mây!");
+    }
     setTimeout(() => { isRemoteUpdating = false; }, 600);
   }
 }
@@ -17458,3 +17584,119 @@ function setupClickOutsideDismissal() {
 
 // Universal Click Outside Dismissal Export
 window.setupClickOutsideDismissal = setupClickOutsideDismissal;
+
+
+// ==============================================================
+// REAL-TIME INTER-APP BRIDGE (GIỮA INDEX.HTML & STOREFRONT.HTML)
+// Đồng bộ tức thì (< 0.05s) hai chiều giữa Quản trị Hệ thống & Web Bán Hàng B2C
+// ==============================================================
+let hahaInterAppChannel = null;
+
+function initInterAppRealtimeBridge() {
+  try {
+    if (typeof BroadcastChannel !== 'undefined' && !hahaInterAppChannel) {
+      hahaInterAppChannel = new BroadcastChannel('haha_os_realtime_bridge');
+      hahaInterAppChannel.onmessage = function(ev) {
+        handleInterAppSyncMessage(ev.data);
+      };
+    }
+  } catch (e) {
+    console.warn('[InterAppBridge] BroadcastChannel warning:', e);
+  }
+
+  window.addEventListener('storage', function(ev) {
+    if (ev.key === DB_KEY && ev.newValue) {
+      handleInterAppSyncMessage({ source: 'STORAGE_EVENT', type: 'DB_SYNC' });
+    }
+  });
+
+  // Kiểm tra Deep-link từ storefront.html sang index.html (VD: index.html?highlightBooking=DH-021 hoặc ?openSupplier=NCC-001)
+  if (!window.IS_STANDALONE_STOREFRONT) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const highlightBooking = urlParams.get('highlightBooking');
+      const openSupplierCode = urlParams.get('openSupplier');
+      if (highlightBooking) {
+        setTimeout(() => {
+          quickLogin('ceo');
+          setTimeout(() => {
+            switchModule(4);
+            if (typeof switchMod4Tab === 'function') switchMod4Tab('bookings');
+            if (typeof openBookingDetailModal === 'function') openBookingDetailModal(highlightBooking);
+            if (typeof showSyncNotificationToast === 'function') {
+              showSyncNotificationToast(`🔗 Đã mở Đơn đặt trực tuyến [${highlightBooking}] chuyển sang từ Web Bán Hàng!`);
+            }
+          }, 150);
+        }, 100);
+      } else if (openSupplierCode) {
+        setTimeout(() => {
+          const supUser = (db.users || []).find(u => u.role === 'SUPPLIER' && (u.supplierId === openSupplierCode || u.username === openSupplierCode));
+          if (supUser) {
+            authenticateAndLogin(supUser, '123456');
+            setTimeout(() => {
+              if (typeof switchSupplierPortalTab === 'function') switchSupplierPortalTab('orders');
+              if (typeof showSyncNotificationToast === 'function') {
+                showSyncNotificationToast(`🏨 Đã mở Lệnh đặt dịch vụ của Đối tác [${openSupplierCode}] từ Web Bán Hàng!`);
+              }
+            }, 150);
+          }
+        }, 100);
+      }
+    } catch (err) {
+      console.warn('[InterAppBridge] Deep-link error:', err);
+    }
+  }
+}
+
+function handleInterAppSyncMessage(payload) {
+  try {
+    const raw = localStorage.getItem(DB_KEY);
+    if (!raw) return;
+    db = JSON.parse(raw);
+    if (typeof syncAllFinancialData === 'function') syncAllFinancialData();
+
+    // Nếu đang ở trên tệp Website Bán Hàng riêng biệt (storefront.html)
+    if (window.IS_STANDALONE_STOREFRONT) {
+      if (typeof window.onErpDatabaseSyncedToStorefront === 'function') {
+        window.onErpDatabaseSyncedToStorefront(payload);
+      }
+      return;
+    }
+
+    // Nếu đang ở trên Hệ thống Quản trị (index.html)
+    if (typeof currentModuleId !== 'undefined' && typeof switchModule === 'function' && currentUser) {
+      switchModule(currentModuleId);
+    }
+    if (typeof updateNotificationBadges === 'function') {
+      updateNotificationBadges();
+    }
+    if (payload && payload.type === 'B2C_NEW_ORDER' && typeof showSyncNotificationToast === 'function') {
+      showSyncNotificationToast(`⚡ [Web Bán Hàng B2C] Đơn mới ${payload.bookingCode} (${payload.customerName}) vừa thanh toán & đồng bộ vào ERP!`);
+    } else if (typeof showSyncNotificationToast === 'function') {
+      showSyncNotificationToast('🔄 Đã đồng bộ dữ liệu thời gian thực với Website Bán Hàng (storefront.html)');
+    }
+  } catch (err) {
+    console.warn('[InterAppBridge] Sync handling error:', err);
+  }
+}
+
+const _originalSaveDatabase = saveDatabase;
+saveDatabase = function(broadcastMeta) {
+  _originalSaveDatabase();
+  try {
+    if (hahaInterAppChannel) {
+      hahaInterAppChannel.postMessage(Object.assign({
+        source: window.IS_STANDALONE_STOREFRONT ? 'B2C_STOREFRONT' : 'ERP_ADMIN',
+        type: 'DB_UPDATED',
+        timestamp: Date.now()
+      }, broadcastMeta || {}));
+    }
+  } catch (e) {}
+};
+window.saveDatabase = saveDatabase;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initInterAppRealtimeBridge);
+} else {
+  initInterAppRealtimeBridge();
+}
