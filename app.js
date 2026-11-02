@@ -15952,11 +15952,15 @@ function openCreateInvoiceModal(prefillBookingCode) {
   }
 
   modal.classList.remove('hidden');
+  modal.classList.add('flex');
 }
 
 function closeCreateInvoiceModal() {
   const modal = document.getElementById('modal-create-invoice');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
 }
 
 function resetInvoiceForm() {
@@ -16135,12 +16139,18 @@ function viewInvoiceModal(invoiceId) {
   document.getElementById('btn-modal-inv-email').onclick = () => sendInvoiceEmail(inv.id);
 
   const modal = document.getElementById('modal-view-invoice');
-  if (modal) modal.classList.remove('hidden');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
 }
 
 function closeViewInvoiceModal() {
   const modal = document.getElementById('modal-view-invoice');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
 }
 
 function downloadInvoiceXml(invoiceId) {
@@ -16252,11 +16262,15 @@ function openCreateTaxReceiptModal(commId) {
   }
 
   modal.classList.remove('hidden');
+  modal.classList.add('flex');
 }
 
 function closeCreateTaxReceiptModal() {
   const modal = document.getElementById('modal-create-tax-receipt');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
 }
 
 function onTaxReceiptCommSelectChange(commId) {
@@ -16360,12 +16374,18 @@ function viewTaxReceiptModal(receiptId) {
   document.getElementById('btn-modal-pit-xml').onclick = () => downloadTaxReceiptXml(r.id);
 
   const modal = document.getElementById('modal-view-tax-receipt');
-  if (modal) modal.classList.remove('hidden');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
 }
 
 function closeViewTaxReceiptModal() {
   const modal = document.getElementById('modal-view-tax-receipt');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
 }
 
 function downloadTaxReceiptXml(receiptId) {
